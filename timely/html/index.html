@@ -1,0 +1,791 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Recurrence Plots and Recurrence Quantification of EEG</title><meta name="generator" content="MATLAB 7.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2012-04-27"><meta name="DC.source" content="timely.m"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style>
+ <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31380322-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> 
+  </head><body><div class="content"><h1>Recurrence Plots and Recurrence Quantification of EEG</h1><!--introduction--><p>These are the lecuture notes to a crashcourse introduction to the analysis of EEG data by means of recurrence quantification. The course was held in Vietri sul Mare (IT), May 2-4, 2012 within the timely (<a href="http://www.timely-cost.eu/">http://www.timely-cost.eu/</a>) framework and supported by European Union.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Requirements</a></li><li><a href="#2">Comments/Questions:</a></li><li><a href="#3">Definition Recurrence plot</a></li><li><a href="#4">System Dynamics, Phase spaces and their reconstruction</a></li><li><a href="#5">Lorenz system</a></li><li><a href="#10">Solving the Lorenz System</a></li><li><a href="#11">Phase space reconstruction</a></li><li><a href="#13">Temporal dynamics of the Lorenz System</a></li><li><a href="#14">Parameter estimation</a></li><li><a href="#15">Recurrence Plots</a></li><li><a href="#16">"Standard" RPs</a></li><li><a href="#17">Visual analysis</a></li><li><a href="#18">Order Patterns Recurrence Plot</a></li><li><a href="#19">Patterns vs. Numbers</a></li><li><a href="#20">Recurrence Quantification</a></li><li><a href="#21">EEG analysis using RQA</a></li><li><a href="#22">Recurrence Plots of EEG data</a></li><li><a href="#23">Recurrence Quantification of EEG data</a></li><li><a href="#24">Comparison of Conditions</a></li><li><a href="#26">Further reading/getting help</a></li><li><a href="#27">Exercises:</a></li></ul></div><h2>Requirements<a name="1"></a></h2><p>In order to work through the examples you will need Matlab and the CRPtoolbox which can be downloaded here: <a href="http://tocsy.pik-potsdam.de/CRPtoolbox/">http://tocsy.pik-potsdam.de/CRPtoolbox/</a>.</p><p>The toolbox is written and maintained by Norbert Marwan of the Potsdam Institute for Climate Impact Research.</p><h2>Comments/Questions:<a name="2"></a></h2><p>Are welcome and should be sent to: <a href="mailto:schinkel@physik.hu-berlin.de">schinkel@physik.hu-berlin.de</a></p><h2>Definition Recurrence plot<a name="3"></a></h2><p>A recurrence plot (RP) is an advanced technique of nonlinear data analysis. It is a visualisation (or a graph) of a square matrix, in which the matrix elements correspond to those times at which a state of a dynamical system recurs (columns and rows correspond then to a certain pair of times). Techniqually, the RP reveals all the times when the phase space trajectory of the dynamical system visits roughly the same area in the phase space.</p><h2>System Dynamics, Phase spaces and their reconstruction<a name="4"></a></h2><p>To get an idea about phase spaces, we will start by investigating a prototypical system, the Lorenz System. We will first look at its phase space portrait and the reconstruct the phase from only a partial observation. The reconstruction of a systems phase space is often a requirement for the construction of recurrence plots from measured data.</p><h2>Lorenz system<a name="5"></a></h2><p>The Lorenz system in a common toy system in nonlinear dynamics. It is defined by the following equations:</p><p><img src="timely_eq97158.png" alt="$$\dot{x}~=~\sigma (y-x)$$"></p><p><img src="timely_eq64045.png" alt="$$\dot{y}~=~\rho x-y-xz $$"></p><p><img src="timely_eq62747.png" alt="$$\dot{z}~=~-\beta z + xy $$"></p><p>with the ] parameters <img src="timely_eq39932.png" alt="$\rho=28$">, <img src="timely_eq38398.png" alt="$$\sigma = 10$">, <img src="timely_eq98798.png" alt="$\beta = 8/3$"> the system evolves around a strange attractor. The phase space portrait is the famous butterfly-like shape.</p><p>This function can easily be solved in Matlab. Save the function definition below to a file called lorenzEq.m and the use a built-in solver (ode45) to integrate the equations.</p><pre class="codeinput"><span class="comment">% function dx = lorenzEq(t,x)</span>
+<span class="comment">%</span>
+<span class="comment">% dx = zeros(3,1);</span>
+<span class="comment">% dx(1) = 10 * (x(2) - x(1));</span>
+<span class="comment">% dx(2) = 28 * x(1) - x(2) - x(1) * x(3);</span>
+<span class="comment">% dx(3) = x(1) * x(2) - 8/3 * x(3);</span>
+</pre><h2>Solving the Lorenz System<a name="10"></a></h2><p>solve the equation</p><pre class="codeinput">[t x] = ode45(<span class="string">'lorenzEq'</span>,[0:.01:50],[5 5 5]);
+
+
+<span class="comment">% To get a head start we can use precomputed data</span>
+<span class="comment">% stored on my website</span>
+url= <span class="string">'http://people.physik.hu-berlin.de/~schinkel/timely/lorenz.dat'</span>;
+x = urlread(url);
+<span class="comment">% since it was stored as text, we have to make it to numbers</span>
+<span class="comment">% and reshape it a little</span>
+x = str2num(x);
+t = x(:,1); x = x(:,2:4);
+
+<span class="comment">% plot lorenz</span>
+plot(t,x);
+xlabel(<span class="string">'Time'</span>), ylabel(<span class="string">'x, y, z'</span>),
+title(<span class="string">'Lorenz System'</span>)
+
+<span class="comment">% plot ps portrait</span>
+figure
+plot3(x(:,1), x(:,2),x(:,3));
+view(-173,42);
+xlabel(<span class="string">'x'</span>), ylabel(<span class="string">'y'</span>), zlabel(<span class="string">'z'</span>);
+</pre><img vspace="5" hspace="5" src="timely_01.png" alt=""> <img vspace="5" hspace="5" src="timely_02.png" alt=""> <h2>Phase space reconstruction<a name="11"></a></h2><p>Now we reconstruct the system from only on component. This is the delay-embedding introduced by Takens</p><p><img src="timely_eq79202.png" alt="$$\vec{x}(i)~=~ (u_i,u_{i+\tau},\dots,u_{i+\tau(m-1)})$$"></p><pre class="codeinput">figure
+tau = 22;
+plot3(x(1:end-2*tau,1),x(1+tau:end-tau,1),x(1+2*tau:end,1));
+view(2);
+xlabel(<span class="string">'x'</span>), ylabel(<span class="string">'y'</span>), zlabel(<span class="string">'z'</span>)
+
+<span class="comment">% The system is recognisable, though a little distorted, by the main,</span>
+<span class="comment">% feature, that it evolves around to fix points restored. This is even</span>
+<span class="comment">% more obvious if we look at the temporal dynamics.</span>
+</pre><img vspace="5" hspace="5" src="timely_03.png" alt=""> <h2>Temporal dynamics of the Lorenz System<a name="13"></a></h2><p>The interesting thing about the Lorenz system is its evolution over time. Lets look at that</p><pre class="codeinput"><span class="comment">% set up a figure</span>
+figure
+hold <span class="string">on</span>
+view(-173,42);
+xlim([-20 20]);
+ylim([-30 30]);
+zlim([0 50]);
+
+<span class="comment">%loop over the data to see the temporal evolution of the system</span>
+<span class="keyword">for</span> i = 1:5:3000
+	plot3(x(i:i+10,1),x(i:i+10,2),x(i:i+10,3));
+	drawnow
+<span class="keyword">end</span>
+
+<span class="comment">% now we do the same for the reconstructed data</span>
+clf
+hold <span class="string">on</span>
+xlim([-20 20]);
+ylim([-20 20]);
+view(2);
+<span class="keyword">for</span> i = 1:5:3000,
+	plot3(x(i:i+10,1),x(i+tau:i+tau+10,1),x(i+2*tau:i+2*tau+10,3));
+	drawnow
+<span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="timely_04.png" alt=""> <h2>Parameter estimation<a name="14"></a></h2><p>The required parameters can be estimated using functions in the CRPtoolbox</p><pre class="codeinput"><span class="comment">% The mi function computes the time-lagged mutual information function</span>
+<span class="comment">% we will use the first minimum as an estimate for the embedding delay.</span>
+<span class="comment">% It uses histograms, we use 10 bins for those, and compute for a maximal</span>
+<span class="comment">% lag of 30.</span>
+
+nBins = 10;
+maxDelay = 30;
+mi(x(:,1),nBins,maxDelay);
+
+<span class="comment">% The FNN function implement a false nearest neighbours approach</span>
+<span class="comment">% to estimate the embedding dimension, we go up to dimension 10</span>
+<span class="comment">% and use the delay estimated above(22)</span>
+maxDim = 10;
+tau = 22;
+fnn(x(:,1),maxDim,tau);
+</pre><img vspace="5" hspace="5" src="timely_05.png" alt=""> <img vspace="5" hspace="5" src="timely_06.png" alt=""> <h2>Recurrence Plots<a name="15"></a></h2><p>Lets now get to recurrence plot. We already have a chaotic system, but for comparison it would be nice to have some random and periodic system as well.</p><pre class="codeinput"><span class="comment">% construct noise and sine</span>
+sine = sin( 0:pi/100 : 5*pi );
+noise = rand(1,length(sine));
+</pre><h2>"Standard" RPs<a name="16"></a></h2><p>Now we compute the RPs for all three systems using the euclidean norm (numeric distance in phase space)</p><pre class="codeinput">rpSine = crp(sine,2,1,.1,<span class="string">'eucl'</span>,<span class="string">'norm'</span>);
+rpNoise = crp(noise,2,1,.1,<span class="string">'eucl'</span>,<span class="string">'norm'</span>);
+rpLorenz = crp(x(:,1),3,22,.3,<span class="string">'eucl'</span>,<span class="string">'norm'</span>);
+</pre><pre class="codeoutput">use method: Euclidean norm
+normalize data
+use method: Euclidean norm
+normalize data
+use method: Euclidean norm
+normalize data
+</pre><h2>Visual analysis<a name="17"></a></h2><p>Visual inspection already reveals that typical system have a unique recurrence structure. In noise there is hardly any structure, periodical system have long continuous lines and chaotic systems are somewhere in between.</p><pre class="codeinput">figure;imagesc(rpNoise);title(<span class="string">'noise'</span>)
+set(gca,<span class="string">'Ydir'</span>,<span class="string">'normal'</span>)
+colormap(flipud(gray(2)));xlabel(<span class="string">'time'</span>),ylabel(<span class="string">'time'</span>);
+
+figure;imagesc(rpSine);title(<span class="string">'sine'</span>)
+set(gca,<span class="string">'Ydir'</span>,<span class="string">'normal'</span>)
+colormap(flipud(gray(2)));xlabel(<span class="string">'time'</span>),ylabel(<span class="string">'time'</span>);
+
+figure;imagesc(rpLorenz);title(<span class="string">'lorenz'</span>)
+set(gca,<span class="string">'Ydir'</span>,<span class="string">'normal'</span>)
+colormap(flipud(gray(2)));xlabel(<span class="string">'time'</span>),ylabel(<span class="string">'time'</span>);
+xlim([1 1000])
+ylim([1 1000])
+</pre><img vspace="5" hspace="5" src="timely_07.png" alt=""> <img vspace="5" hspace="5" src="timely_08.png" alt=""> <img vspace="5" hspace="5" src="timely_09.png" alt=""> <h2>Order Patterns Recurrence Plot<a name="18"></a></h2><p>Instead of a numerical similarity, we can also use order patterns to look for recurrences in a symbolic space</p><pre class="codeinput">oprpSine = crp(sine,2,1,.1,<span class="string">'op'</span>,<span class="string">'norm'</span>);
+oprpNoise = crp(noise,2,1,.1,<span class="string">'op'</span>,<span class="string">'norm'</span>);
+oprpLorenz = crp(x(:,1),3,22,.3,<span class="string">'op'</span>,<span class="string">'norm'</span>);
+
+figure;imagesc(oprpNoise);title(<span class="string">'noise'</span>)
+set(gca,<span class="string">'Ydir'</span>,<span class="string">'normal'</span>)
+colormap(flipud(gray(2)));xlabel(<span class="string">'time'</span>),ylabel(<span class="string">'time'</span>);
+
+figure;imagesc(oprpSine);title(<span class="string">'sine'</span>)
+set(gca,<span class="string">'Ydir'</span>,<span class="string">'normal'</span>)
+colormap(flipud(gray(2)));xlabel(<span class="string">'time'</span>),ylabel(<span class="string">'time'</span>);
+
+figure;imagesc(oprpLorenz);title(<span class="string">'lorenz'</span>)
+set(gca,<span class="string">'Ydir'</span>,<span class="string">'normal'</span>)
+colormap(flipud(gray(2)));xlabel(<span class="string">'time'</span>),ylabel(<span class="string">'time'</span>);
+</pre><pre class="codeoutput">use method: order pattern
+normalize data
+use method: order pattern
+normalize data
+use method: order pattern
+normalize data
+</pre><img vspace="5" hspace="5" src="timely_10.png" alt=""> <img vspace="5" hspace="5" src="timely_11.png" alt=""> <img vspace="5" hspace="5" src="timely_12.png" alt=""> <h2>Patterns vs. Numbers<a name="19"></a></h2><p>Again looking at the figures, what do you see? What can you learn for the analysis based on order patterns?</p><h2>Recurrence Quantification<a name="20"></a></h2><p>Recurrence Quantification can be used to further investigate the structures in an RP, which provides insights on the time dependent behaviour of the system. We will practice that with EEG data from a standard oddball-experiment (Sutton 1965)</p><h2>EEG analysis using RQA<a name="21"></a></h2><p>EEG/ERP analysis is used to investigate the brains response to given stimulus. The prime advantage it its high temporal resolution. In order to study the temporal dynamics, we will use the RQA in a windowed fashion ie. we extract small windows from the RP and quantify those.</p><pre class="codeinput"><span class="comment">% The data for a single subject P3 can be downloaded from my website.</span>
+<span class="comment">% For convenience we will refer to the condition with P3 as "a" and that</span>
+<span class="comment">% without as conditions "b"</span>
+
+<span class="comment">% clean up workspace</span>
+clear
+close <span class="string">all</span>
+
+<span class="comment">% load data</span>
+urlA = <span class="string">'http://people.physik.hu-berlin.de/~schinkel/timely/c10.dat'</span>;
+urlB = <span class="string">'http://people.physik.hu-berlin.de/~schinkel/timely/c11.dat'</span>;
+
+a = str2num(urlread(urlA));
+b = str2num(urlread(urlB));
+
+<span class="comment">% both matrices are 40x276, where the 1st dimension are the electrodes,</span>
+<span class="comment">% the 2nd is time. The data is already averaged over trials.</span>
+<span class="comment">% The EEG is sampled from -300ms pre-stimulus to 800 ms post-stimulus</span>
+<span class="comment">% at 250Hz (4ms steps).</span>
+
+timeScale = -300:4:800;
+
+<span class="comment">% First we look at Voltage measurements at Pz (channel 27)</span>
+<span class="comment">% which reveals a well-pronounced P300</span>
+plot(timeScale,a(27,:));
+hold <span class="string">on</span>;
+plot(timeScale,b(27,:),<span class="string">'r'</span>);
+legend(<span class="string">'A'</span>,<span class="string">'B'</span>);
+xlabel(<span class="string">'time in ms'</span>);
+ylabel(<span class="string">'Voltage'</span>);
+</pre><img vspace="5" hspace="5" src="timely_13.png" alt=""> <h2>Recurrence Plots of EEG data<a name="22"></a></h2><p>Now we look at the RPs of the data. We will use the recurrence criterion introduced by Eckmann et al, fixed amount of nearest neighbours ('fan'). </p>
+<pre class="codeinput">
+<span class="comment">% Embedding dimension and delay </span>
+dim = 3;
+tau = 4;
+
+<span class="comment">% the threshold we use is .1 (10% nearest neighbours)</span>
+thresh = .1;
+
+<span class="comment">% construct RPs</span>
+rpA = crp(a(27,:),dim,tau,thresh,<span class="string">'fan'</span>);
+rpB = crp(b(27,:),dim,tau,thresh,<span class="string">'fan'</span>);
+
+<span class="comment">% adjust the timeScale to compensate for embedding</span>
+tsNew = timeScale(1:size(rpA,1));
+
+<span class="comment">%and plot the RPs</span>
+figure;imagesc(rpA);
+title(<span class="string">'Condition A'</span>)
+set(gca,<span class="string">'Ydir'</span>,<span class="string">'normal'</span>)
+set(gca,<span class="string">'XTickl'</span>,tsNew(get(gca,<span class="string">'XTick'</span>)))
+colormap(flipud(gray(2)));
+xlabel(<span class="string">'time'</span>);
+ylabel(<span class="string">'time'</span>);
+
+figure;
+imagesc(rpB);
+title(<span class="string">'Condition B'</span>)
+set(gca,<span class="string">'Ydir'</span>,<span class="string">'normal'</span>)
+set(gca,<span class="string">'XTickl'</span>,tsNew(get(gca,<span class="string">'XTick'</span>)))
+colormap(flipud(gray(2)));
+xlabel(<span class="string">'time'</span>);
+ylabel(<span class="string">'time'</span>);
+
+
+</pre><pre class="codeoutput">use method: fixed amount of nearest neighbours
+normalize data
+use method: fixed amount of nearest neighbours
+normalize data
+</pre><img vspace="5" hspace="5" src="timely_14.png" alt="">
+<img vspace="5" hspace="5" src="timely_15.png" alt=""> 
+<p> Look at the plots and inspect them for differences.
+Try different norms and thresholds (this is easiest done using the GUI 
+<pre class="codeinput">crp(a(27,:);
+crp(b(27,:);
+</pre>
+
+</p>
+
+ <h2>Recurrence Quantification of EEG data<a name="23"></a></h2><p>The plots already "look different". In order to quantify the differences, we compute the recurrence based complexity measures (ie RQA) over time in windows of 240ms with a shifting of 20ms.</p><pre class="codeinput">win = 60;
+step = 5;
+<span class="comment">% Try different norms and thresholds.</span>
+<span class="comment">% We do this for all electrodes this time.</span>
+<span class="comment">% Computation will take a little (about 2min</span>
+<span class="comment">% or so). To not get too bored, we ask</span>
+<span class="comment">% Matlab to tell us how long it takes</span>
+<span class="comment">% for each electrode.</span>
+
+<span class="keyword">for</span> iElec = 1:40
+    tic,
+	rqaA(iElec,:,:) = crqa(a(iElec,:),dim,tau,thresh,win,step,<span class="string">'fan'</span>,<span class="string">'sil'</span>);
+	rqaB(iElec,:,:) = crqa(b(iElec,:),dim,tau,thresh,win,step,<span class="string">'fan'</span>,<span class="string">'sil'</span>);
+    disp(sprintf(<span class="string">'Electrode %d of %d took %2.2f seconds'</span>,iElec,40,toc));
+<span class="keyword">end</span> <span class="comment">%iElec</span>
+</pre><pre class="codeoutput">Electrode 1 of 40 took 6.15 seconds
+Electrode 2 of 40 took 5.99 seconds
+Electrode 3 of 40 took 6.01 seconds
+Electrode 4 of 40 took 6.00 seconds
+Electrode 5 of 40 took 5.98 seconds
+Electrode 6 of 40 took 6.00 seconds
+Electrode 7 of 40 took 6.02 seconds
+Electrode 8 of 40 took 6.01 seconds
+Electrode 9 of 40 took 6.00 seconds
+Electrode 10 of 40 took 5.99 seconds
+Electrode 11 of 40 took 6.09 seconds
+Electrode 12 of 40 took 6.05 seconds
+Electrode 13 of 40 took 5.97 seconds
+Electrode 14 of 40 took 6.00 seconds
+Electrode 15 of 40 took 5.99 seconds
+Electrode 16 of 40 took 6.00 seconds
+Electrode 17 of 40 took 5.96 seconds
+Electrode 18 of 40 took 5.99 seconds
+Electrode 19 of 40 took 6.04 seconds
+Electrode 20 of 40 took 6.01 seconds
+Electrode 21 of 40 took 6.01 seconds
+Electrode 22 of 40 took 6.00 seconds
+Electrode 23 of 40 took 5.99 seconds
+Electrode 24 of 40 took 6.03 seconds
+Electrode 25 of 40 took 5.99 seconds
+Electrode 26 of 40 took 6.03 seconds
+Electrode 27 of 40 took 6.06 seconds
+Electrode 28 of 40 took 6.02 seconds
+Electrode 29 of 40 took 6.03 seconds
+Electrode 30 of 40 took 6.02 seconds
+Electrode 31 of 40 took 5.98 seconds
+Electrode 32 of 40 took 6.00 seconds
+Electrode 33 of 40 took 5.99 seconds
+Electrode 34 of 40 took 6.00 seconds
+Electrode 35 of 40 took 6.03 seconds
+Electrode 36 of 40 took 5.98 seconds
+Electrode 37 of 40 took 5.99 seconds
+Electrode 38 of 40 took 5.98 seconds
+Electrode 39 of 40 took 6.02 seconds
+Electrode 40 of 40 took 6.01 seconds
+</pre><h2>Comparison of Conditions<a name="24"></a></h2><p>rqa = crqa() returns DET in the second column (ie rqa(:,2) ), which is now shifted  by one dimension since we did it for all electrodes. The measure DET is  a measure for determinism (in the sense of predictability) in the the signal. Lets plot that for all electrodes in a surface plot.</p><pre class="codeinput">figure;
+surf(timeScale(1:step:size(rqaA,2)), 1:40,rqaA(:,1:step:end,2));
+view(2);
+colorbar;
+axis <span class="string">tight</span>
+title(<span class="string">'DET in condition A'</span>);
+xlabel(<span class="string">'time in ms'</span>);
+ylabel(<span class="string">'electrodes'</span>);
+
+figure;
+surf(timeScale(1:step:size(rqaB,2)), 1:40,rqaB(:,1:step:end,2));
+view(2);
+colorbar;
+axis <span class="string">tight</span>
+title(<span class="string">'DET in condition B'</span>);
+xlabel(<span class="string">'time in ms'</span>);
+ylabel(<span class="string">'electrodes'</span>);
+</pre><img vspace="5" hspace="5" src="timely_16.png" alt=""> <img vspace="5" hspace="5" src="timely_17.png" alt=""> <p>This already reveals a higher level in DET in condition B, the condition that features a P300. To highlight that difference we now plot the difference</p><pre class="codeinput"><span class="comment">% compute difference</span>
+deltaDET = rqaB(:,:,2) - rqaA(:,:,2);
+
+<span class="comment">% and plot it</span>
+figure
+surf(timeScale(1:step:size(deltaDET,2)), 1:40,deltaDET(:,1:step:end));
+view(2);
+colorbar;
+axis <span class="string">tight</span>
+title(<span class="string">'DET difference condition B-A'</span>);
+xlabel(<span class="string">'time in ms'</span>);
+ylabel(<span class="string">'electrodes'</span>);
+</pre><img vspace="5" hspace="5" src="timely_18.png" alt=""> <h2>Further reading/getting help<a name="26"></a></h2><p>Plenty of information can be found on the net. A good starting point is <a href="http://www.recurrence-plot.tk">http://www.recurrence-plot.tk</a>, which has plenty of information about the method as well as a comprehensive bibliography and a forum.</p><h2>Exercises:<a name="27"></a></h2><p>1) Analyse the logistic map <img src="timely_eq67689.png" alt="$\qquad x_{n+1} = r x_n (1-x_n)$"> Begin with an interval for r from  [3.5 4]. Then proceed by studying <img src="timely_eq25861.png" alt="$r$"> in [3 4]. Can you detect transitions ?  Can you relate those to the bifurcation diagram of the logitic map</p><pre class="codeinput"><span class="comment">% function out = logistic(x0,r,n)</span>
+<span class="comment">%   out(1) = x0;</span>
+<span class="comment">%   for i = 1:n-1</span>
+<span class="comment">%       out(i+1) = r*out(i)*(1-out(i));</span>
+<span class="comment">%   end</span>
+</pre>
+<p>2) Further study the EEG data provided. Use the software on my website 
+<a href="http://people.physik.hu-berlin.de/~schinkel">http://people.physik.hu-berlin.de/~schinkel</a> 
+to estimate the confidence bounds of RQA measures. (cf. Schinkel et al, 2009)</p>
+<p>3) Try to construct networks based on joint recurrences (cf. Schinkel et al, 2011).</p><p class="footer"><br>
+      Published with MATLAB&reg; 7.11<br></p></div><!--
+##### SOURCE BEGIN #####
+%% Recurrence Plots and Recurrence Quantification of EEG
+%
+% These are the lecuture notes to a crashcourse introduction
+% to the analysis of EEG data by means of recurrence quantification. 
+% The course was held in Vietri sul Mare (IT), May 2-4, 2012 within
+% the timely (http://www.timely-cost.eu/) framework and supported by
+% European Union.
+%
+
+%% Requirements
+%
+% In order to work through the examples you will 
+% need Matlab and the CRPtoolbox which can be downloaded here:
+% http://tocsy.pik-potsdam.de/CRPtoolbox/.
+%
+% The toolbox is written and maintained by Norbert Marwan of the
+% Potsdam Institute for Climate Impact Research. 
+
+%% Comments/Questions:
+%
+% Are welcome and should be sent to: schinkel@physik.hu-berlin.de
+
+
+%% Definition Recurrence plot 
+%
+% A recurrence plot (RP) is an advanced technique of nonlinear data 
+% analysis. It is a visualisation (or a graph) of a square matrix, 
+% in which the matrix elements correspond to those times at which a 
+% state of a dynamical system recurs (columns and rows correspond then 
+% to a certain pair of times). Techniqually, the RP reveals all the 
+% times when the phase space trajectory of the dynamical system visits 
+% roughly the same area in the phase space.
+
+%% System Dynamics, Phase spaces and their reconstruction
+%
+% To get an idea about phase spaces, we will start by investigating a 
+% prototypical system, the Lorenz System. We will first look at its
+% phase space portrait and the reconstruct the phase from only a 
+% partial observation. The reconstruction of a systems phase space
+% is often a requirement for the construction of recurrence plots
+% from measured data.
+
+%% Lorenz system
+%
+% The Lorenz system in a common toy system in nonlinear dynamics. 
+% It is defined by the following equations:
+%%
+% $$\dot{x}~=~\sigma (y-x)$$
+%%
+% $$\dot{y}~=~\rho x-y-xz $$
+%%
+% $$\dot{z}~=~-\beta z + xy $$
+%%
+% with the ] parameters $\rho=28$, $$\sigma = 10$, $\beta = 8/3$ 
+% the system evolves around a strange attractor.
+% The phase space portrait is the famous butterfly-like shape.
+%
+% This function can easily be solved in Matlab. Save the function 
+% definition below to a file called lorenzEq.m and the use a built-in
+% solver (ode45) to integrate the equations.
+
+% function dx = lorenzEq(t,x)
+% 
+% dx = zeros(3,1); 
+% dx(1) = 10 * (x(2) - x(1)); 
+% dx(2) = 28 * x(1) - x(2) - x(1) * x(3); 
+% dx(3) = x(1) * x(2) - 8/3 * x(3);
+
+%% Solving the Lorenz System
+% solve the equation
+
+[t x] = ode45('lorenzEq',[0:.01:50],[5 5 5]);
+
+
+% To get a head start we can use precomputed data
+% stored on my website
+url= 'http://people.physik.hu-berlin.de/~schinkel/timely/lorenz.dat'; 
+x = urlread(url);
+% since it was stored as text, we have to make it to numbers
+% and reshape it a little
+x = str2num(x);
+t = x(:,1); x = x(:,2:4);  
+
+% plot lorenz
+plot(t,x);
+xlabel('Time'), ylabel('x, y, z'), 
+title('Lorenz System')
+
+% plot ps portrait
+figure
+plot3(x(:,1), x(:,2),x(:,3)); 
+view(-173,42);
+xlabel('x'), ylabel('y'), zlabel('z');
+
+
+%% Phase space reconstruction
+% Now we reconstruct the system from only
+% on component. This is the delay-embedding introduced
+% by Takens 
+%%
+% $$\vec{x}(i)~=~ (u_i,u_{i+\tau},\dots,u_{i+\tau(m-1)})$$
+
+
+figure
+tau = 22;
+plot3(x(1:end-2*tau,1),x(1+tau:end-tau,1),x(1+2*tau:end,1));
+view(2);
+xlabel('x'), ylabel('y'), zlabel('z')
+
+% The system is recognisable, though a little distorted, by the main,
+% feature, that it evolves around to fix points restored. This is even
+% more obvious if we look at the temporal dynamics. 
+
+%% Temporal dynamics of the Lorenz System
+% The interesting thing about the Lorenz system is its 
+% evolution over time. Lets look at that
+
+% set up a figure 
+figure
+hold on
+view(-173,42);
+xlim([-20 20]);
+ylim([-30 30]);
+zlim([0 50]);
+
+%loop over the data to see the temporal evolution of the system
+for i = 1:5:3000
+	plot3(x(i:i+10,1),x(i:i+10,2),x(i:i+10,3));
+	drawnow
+end
+
+% now we do the same for the reconstructed data
+clf
+hold on
+xlim([-20 20]);
+ylim([-20 20]);
+view(2);
+for i = 1:5:3000, 
+	plot3(x(i:i+10,1),x(i+tau:i+tau+10,1),x(i+2*tau:i+2*tau+10,3));
+	drawnow
+end
+
+%% Parameter estimation 
+% The required parameters can be estimated using functions in the CRPtoolbox
+%
+
+% The mi function computes the time-lagged mutual information function
+% we will use the first minimum as an estimate for the embedding delay.
+% It uses histograms, we use 10 bins for those, and compute for a maximal
+% lag of 30.
+
+nBins = 10; 
+maxDelay = 30;
+mi(x(:,1),nBins,maxDelay);
+
+% The FNN function implement a false nearest neighbours approach
+% to estimate the embedding dimension, we go up to dimension 10
+% and use the delay estimated above(22)
+maxDim = 10; 
+tau = 22; 
+fnn(x(:,1),maxDim,tau);
+
+
+
+
+%% Recurrence Plots
+% Lets now get to recurrence plot. 
+% We already have a chaotic system, but for comparison it
+% would be nice to have some random and periodic system as well. 
+
+% construct noise and sine
+sine = sin( 0:pi/100 : 5*pi );
+noise = rand(1,length(sine));
+
+%% "Standard" RPs
+% Now we compute the RPs for all three systems 
+% using the euclidean norm (numeric distance in phase space)
+
+rpSine = crp(sine,2,1,.1,'eucl','norm');
+rpNoise = crp(noise,2,1,.1,'eucl','norm');
+rpLorenz = crp(x(:,1),3,22,.3,'eucl','norm');
+
+%% Visual analysis
+% Visual inspection already reveals that typical
+% system have a unique recurrence structure. 
+% In noise there is hardly any structure, periodical 
+% system have long continuous lines and chaotic systems
+% are somewhere in between.
+
+figure;imagesc(rpNoise);title('noise')
+set(gca,'Ydir','normal')
+colormap(flipud(gray(2)));xlabel('time'),ylabel('time');
+
+figure;imagesc(rpSine);title('sine')
+set(gca,'Ydir','normal')
+colormap(flipud(gray(2)));xlabel('time'),ylabel('time');
+
+figure;imagesc(rpLorenz);title('lorenz')
+set(gca,'Ydir','normal')
+colormap(flipud(gray(2)));xlabel('time'),ylabel('time');
+xlim([1 1000])
+ylim([1 1000])
+
+
+%% Order Patterns Recurrence Plot
+% Instead of a numerical similarity, we
+% can also use order patterns to look
+% for recurrences in a symbolic space
+
+oprpSine = crp(sine,2,1,.1,'op','norm');
+oprpNoise = crp(noise,2,1,.1,'op','norm');
+oprpLorenz = crp(x(:,1),3,22,.3,'op','norm');
+ 
+figure;imagesc(oprpNoise);title('noise')
+set(gca,'Ydir','normal')
+colormap(flipud(gray(2)));xlabel('time'),ylabel('time');
+
+figure;imagesc(oprpSine);title('sine')
+set(gca,'Ydir','normal')
+colormap(flipud(gray(2)));xlabel('time'),ylabel('time');
+
+figure;imagesc(oprpLorenz);title('lorenz')
+set(gca,'Ydir','normal')
+colormap(flipud(gray(2)));xlabel('time'),ylabel('time');
+
+%% Patterns vs. Numbers
+% Again looking at the figures, what do you see?
+% What can you learn for the analysis based on order patterns?
+
+%% Recurrence Quantification
+% Recurrence Quantification can be used to further investigate
+% the structures in an RP, which provides insights on the time
+% dependent behaviour of the system. We will practice that with EEG 
+% data from a standard oddball-experiment (Sutton 1965)
+
+%% EEG analysis using RQA
+%
+% EEG/ERP analysis is used to investigate the brains response to 
+% given stimulus. The prime advantage it its high temporal resolution. 
+% In order to study the temporal dynamics, we will use the RQA in 
+% a windowed fashion ie. we extract small windows from the RP and 
+% quantify those.
+
+% The data for a single subject P3 can be downloaded from my website.
+% For convenience we will refer to the condition with P3 as "a" and that
+% without as conditions "b"
+
+% clean up workspace
+clear
+close all
+
+% load data
+urlA = 'http://people.physik.hu-berlin.de/~schinkel/timely/c10.dat';
+urlB = 'http://people.physik.hu-berlin.de/~schinkel/timely/c11.dat';
+
+a = str2num(urlread(urlA));
+b = str2num(urlread(urlB));
+
+% both matrices are 40x276, where the 1st dimension are the electrodes,
+% the 2nd is time. The data is already averaged over trials.
+% The EEG is sampled from -300ms pre-stimulus to 800 ms post-stimulus
+% at 250Hz (4ms steps). 
+
+timeScale = -300:4:800;
+
+% First we look at Voltage measurements at Pz (channel 27)
+% which reveals a well-pronounced P300
+plot(timeScale,a(27,:));
+hold on;
+plot(timeScale,b(27,:),'r');
+legend('A','B');
+xlabel('time in ms');
+ylabel('Voltage');
+
+%% Recurrence Plots of EEG data
+% Now we look at the RPs of the data. We will use the 
+% recurrence criterion introduced by Eckmann et al, 
+% fixed amount of nearest neighbours ('fan'). 
+% Embedding dimension and delay we use are:
+
+dim = 3;
+tau = 4;
+
+% the threshold we use is .1 (10% nearest neighbours)
+thresh = .1;
+
+% construct RPs
+rpA = crp(a(27,:),dim,tau,thresh,'fan');
+rpB = crp(b(27,:),dim,tau,thresh,'fan');
+
+% adjust the timeScale to compensate for embedding
+tsNew = timeScale(1:size(rpA,1));
+
+%and plot the RPs
+figure;imagesc(rpA);
+title('Condition A')
+set(gca,'Ydir','normal')
+set(gca,'XTickl',tsNew(get(gca,'XTick')))
+colormap(flipud(gray(2)));
+xlabel('time');
+ylabel('time');
+
+figure;
+imagesc(rpB);
+title('Condition B')
+set(gca,'Ydir','normal')
+set(gca,'XTickl',tsNew(get(gca,'XTick')))
+colormap(flipud(gray(2)));
+xlabel('time');
+ylabel('time');
+
+
+% Look at the plots and inspect them for differences. 
+% Try different norms and thresholds. 
+
+
+%% Recurrence Quantification of EEG data
+% The plots already "look different". In order to
+% quantify the differences, we compute the recurrence
+% based complexity measures (ie RQA) over time in 
+% windows of 240ms with a shifting of 20ms.
+
+win = 60;
+step = 5;
+
+% We do this for all electrodes this time.
+% Computation will take a little (about 2min
+% or so). To not get too bored, we ask
+% Matlab to tell us how long it takes 
+% for each electrode.
+
+for iElec = 1:40
+    tic,
+	rqaA(iElec,:,:) = crqa(a(iElec,:),dim,tau,thresh,win,step,'fan','sil');
+	rqaB(iElec,:,:) = crqa(b(iElec,:),dim,tau,thresh,win,step,'fan','sil');
+    disp(sprintf('Electrode %d of %d took %2.2f seconds',iElec,40,toc));
+end %iElec
+
+%% Comparison of Conditions
+% rqa = crqa() returns DET in the second column (ie rqa(:,2) ), 
+% which is now shifted  by one dimension since we did it for 
+% all electrodes. The measure DET is  a measure for determinism
+% (in the sense of predictability) in the the signal. 
+% Lets plot that for all electrodes in a surface plot.
+
+figure;
+surf(timeScale(1:step:size(rqaA,2)), 1:40,rqaA(:,1:step:end,2));
+view(2);
+colorbar;
+axis tight
+title('DET in condition A');
+xlabel('time in ms'); 
+ylabel('electrodes');
+
+figure;
+surf(timeScale(1:step:size(rqaB,2)), 1:40,rqaB(:,1:step:end,2));
+view(2);
+colorbar;
+axis tight
+title('DET in condition B');
+xlabel('time in ms'); 
+ylabel('electrodes');
+
+%%
+% This already reveals a higher level in DET in condition B, 
+% the condition that features a P300. To highlight that difference
+% we now plot the difference
+
+% compute difference 
+deltaDET = rqaB(:,:,2) - rqaA(:,:,2);
+
+% and plot it
+figure
+surf(timeScale(1:step:size(deltaDET,2)), 1:40,deltaDET(:,1:step:end));
+view(2);
+colorbar;
+axis tight
+title('DET difference condition B-A');
+xlabel('time in ms'); 
+ylabel('electrodes');
+
+%% Further reading/getting help
+%
+% Plenty of information can be found on the net. A good starting point
+% is http://www.recurrence-plot.tk, which has plenty of information
+% about the method as well as a comprehensive bibliography and a forum. 
+%
+
+%% Exercises:
+%
+% 1) Analyse the logistic map $\qquad x_{n+1} = r x_n (1-x_n)$
+% Begin with an interval for r from  [3.5 4]. Then proceed by studying
+% $r$ in [3 4]. Can you detect transitions ?  Can you relate those to 
+% the bifurcation diagram of the logitic map 
+%
+
+% function out = logistic(x0,r,n)
+%   out(1) = x0;
+%   for i = 1:n-1
+%       out(i+1) = r*out(i)*(1-out(i));
+%   end
+%%
+% 2) Further study the EEG data provided. 
+% Use the software on my website
+% http://people.physik.hu-berlin.de/~schinkel to estimate the confidence 
+% bounds of RQA measures. (cf. Schinkel et al, 2009)? 
+%
+% Try to construct networks based on joint recurrences 
+% (cf. Schinkel et al, 2011). 
+%
+
+##### SOURCE END #####
+-->
+
+ 
+</body></html>
