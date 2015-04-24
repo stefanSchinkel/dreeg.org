@@ -1,16 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml"> 
-<head> 
-	<title> 
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>
 		BVARENAME - rename BrainVision data and header files
-	</title> 
-	<meta name="author" content="stefan schinkel" /> 
-	<meta name="Keywords" content=" EEG, BrainVision, Matlab, .vmrk, .vhdr,.eeg, renaming, python" /> 
-	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" /> 
-	<meta name="robots" content="index" /> 
-	<link rel="stylesheet" type="text/css" href="src/style.css" /> 
-	<link rel="shortcut icon" href="img/favicon.ico" /> 
+	</title>
+	<meta name="author" content="stefan schinkel" />
+	<meta name="Keywords" content=" EEG, BrainVision, Matlab, .vmrk, .vhdr,.eeg, renaming, python" />
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+	<meta name="robots" content="index" />
+	<link rel="stylesheet" type="text/css" href="src/style.css" />
+	<link rel="shortcut icon" href="img/favicon.ico" />
 <!-- 	<link rel="shortcut icon" href="img/favicon.ico" /> //-->
 
 <!-- lightbox //-->
@@ -29,14 +29,14 @@
 
 </script>
 
-</head> 
-<body> 
- 
- 
-<div class="banner"> 
-	<p> 
-<!-- 		<img src="img/freebsd.png" style="float:none" alt="A daemon" 
-		title="I'm a dang sight cuter than that penguin with the Huge Butt."/> 
+</head>
+<body>
+
+
+<div class="banner">
+	<p>
+<!-- 		<img src="img/freebsd.png" style="float:none" alt="A daemon"
+		title="I'm a dang sight cuter than that penguin with the Huge Butt."/>
 		<br /> -->
 		<a href="index.html">Home</a> 	<br />
 		<a href="#about">About</a>		<br />
@@ -45,41 +45,41 @@
 		<a href="#example">Example</a>			<br />
 		<a href="#download">Download</a>		<br />
 		<a href="#questions">Questions?</a>		<br />
-	</p> 
-</div> 
- 
- 
-<div class="content"> 
-<h3 class="subheading"> 
+	</p>
+</div>
+
+
+<div class="content">
+<h3 class="subheading">
 	BVARENAME - rename BrainVision data and header files
-</h3>	
+</h3>
 
 <h4 class="subheading"> About:</h4>	<a name="about"></a>
 <p> Sometimes one has to rename <a href="http://www.brainproducts.com/productdetails.php?id=21"> BrainVision Recorder</a>
 output files (eg. if subject coding changes, or you entered the wrong filename, etc.). This involves changing the actual filenames
 <span class="boldRed"> and</span> rewriting the header (.vhdr) and marker (.vmrk) files.
 Doing this manually is clearly too error-prone.
-I had to do this and thus wrote a very simple Python script to take care of that. 
+I had to do this and thus wrote a very simple Python script to take care of that.
 Maybe you can use that too.<br />
  <span class="boldRed">Important note:
 This function works in-place!</span></p>
 
-<h4 class="subheading"> Contents:</h4><a name="contents"></a>	
+<h4 class="subheading"> Contents:</h4><a name="contents"></a>
 <dl>
-	<dt>bvaRename.py</dt>    
+	<dt>bvaRename.py</dt>
 	<dd> - the actual thing</dd>
-	
+
 </dl>
 
 
-<h4 class="subheading"> Requirements:</h4><a name="requirements"></a>	
+<h4 class="subheading"> Requirements:</h4><a name="requirements"></a>
 <ul>
 	<li>
 		Python - I hacked this on 2.6. But it should work w/ older releases as well (nothing fancy there)
 	</li>
 </ul>
 
-<h4 class="subheading"> Example:</h4><a name="example"></a>	
+<h4 class="subheading"> Example:</h4><a name="example"></a>
 
 <p> Download the script and make it executable. Also add it to $PATH so it can be called
 from anywhere
@@ -105,24 +105,24 @@ XYZ_0001cognitive.vhdr 	XYZ_0001visual.vmrk
 XYZ_0001cognitive.vmrk 	XYZ_0001motor.eeg
 XYZ_0001emotional.eeg   XYZ_0001motor.vhdr
 XYZ_0001emotional.vhdr  XYZ_0001motor.vmrk
-XYZ_0001emotional.vmrk  
-XYZ_0001visual.eeg      
+XYZ_0001emotional.vmrk
+XYZ_0001visual.eeg
 </pre>
 <p> Now rename everyting</p>
 <pre>
 user@host~/temp$ bvaRename.py XYZ_0001 subject02
 
-Rewriting XYZ_0001cognitive.vhdr to subject02cognitive.vhdr 
-Rewriting XYZ_0001cognitive.vmrk to subject02cognitive.vmrk 
+Rewriting XYZ_0001cognitive.vhdr to subject02cognitive.vhdr
+Rewriting XYZ_0001cognitive.vmrk to subject02cognitive.vmrk
 Renaming XYZ_0001cognitive.eeg to subject02cognitive.eeg
-Rewriting XYZ_0001emotional.vhdr to subject02emotional.vhdr 
-Rewriting XYZ_0001emotional.vmrk to subject02emotional.vmrk 
+Rewriting XYZ_0001emotional.vhdr to subject02emotional.vhdr
+Rewriting XYZ_0001emotional.vmrk to subject02emotional.vmrk
 Renaming XYZ_0001emotional.eeg to subject02emotional.eeg
-Rewriting XYZ_0001visual.vhdr to subject02visual.vhdr 
-Rewriting XYZ_0001visual.vmrk to subject02visual.vmrk 
+Rewriting XYZ_0001visual.vhdr to subject02visual.vhdr
+Rewriting XYZ_0001visual.vmrk to subject02visual.vmrk
 Renaming XYZ_0001visual.eeg to subject02visual.eeg
-Rewriting XYZ_0001motor.vhdr to subject02motor.vhdr 
-Rewriting XYZ_0001motor.vmrk to subject02motor.vmrk 
+Rewriting XYZ_0001motor.vhdr to subject02motor.vhdr
+Rewriting XYZ_0001motor.vmrk to subject02motor.vmrk
 Renaming XYZ_0001motor.eeg to subject02motor.eeg
 All done. Have a nice day
 </pre>
@@ -137,56 +137,51 @@ subject02cognitive.vhdr 	subject02visual.vmrk
 subject02cognitive.vmrk 	subject02motor.eeg
 subject02emotional.eeg   	subject02motor.vhdr
 subject02emotional.vhdr  	subject02motor.vmrk
-subject02emotional.vmrk  
-subject02visual.eeg   
+subject02emotional.vmrk
+subject02visual.eeg
 </pre>
-<p> 
-In the same manner one could have changed visual to motor, motor to cognitive and so on. 
-<h4 class="subheading"> Download:</h4><a name="download"></a>	
+<p>
+In the same manner one could have changed visual to motor, motor to cognitive and so on.
+<h4 class="subheading"> Download:</h4><a name="download"></a>
          <span class="bold">
          <a  class="download"  href="download/bvaRename.py">bvaRename.py </a>
          </span>
           &mdash; version: 0.01
-         &nbsp;&nbsp;&nbsp; md5: 5e3726f70f127c958df3917b6a2b6245 
+         &nbsp;&nbsp;&nbsp; md5: 5e3726f70f127c958df3917b6a2b6245
          <br />
 
 
 <h4 class="subheading"> Questions/Requests? :</h4>	<a name="questions"></a>
+
 <ins>
+<span style="display:inline;" id="ophyscator"></span>
 <script type="text/javaScript">
-<!--
-var a = new Array('l','h','h','e','s','.','i','l','n','h','i','p','u','d','e','@','i','s','r','k','.','c','y','-','k','b','e','n');
-var b = new Array('.','n','d','@','y','r','i','p','.','i','l','l','s','c','i','b','h','k','e','e','s','-','e','u','h','h','k','n');
-document.write("<a href='mailto:"+a[4]+a[21]+a[2]+a[10]+a[27]+a[24]+a[26]+a[7]+a[15]+a[11]+a[9]+a[22]+a[17]+a[16]+a[19]+a[20]+a[1]+a[12]+a[23]+a[25]+a[3]+a[18]+a[0]+a[6]+a[8]+a[5]+a[13]+a[14]+"'>");
-document.write(b[12]+b[13]+b[24]+b[6]+b[27]+b[17]+b[22]+b[10]+b[3]+b[7]+b[25]+b[4]+b[20]+b[9]+b[26]+b[8]+b[16]+b[23]+b[21]+b[15]+b[19]+b[5]+b[11]+b[14]+b[1]+b[0]+b[2]+b[18]+"<\/a>");//-->
+
+var a = new Array('d','r','g','e','i','g','@','o','e','r','m','.','l','a');
+var b = new Array('g','d','r','r','e','@','a','l','m','g','i','.','e','o');
+var str = "<a href='mailto:"+a[10]+a[13]+a[4]+a[12]+a[6]+a[0]+a[1]+a[3]+a[8]+a[2]+a[11]+a[7]+a[9]+a[5]+"'>"+b[8]+b[6]+b[10]+b[7]+b[5]+b[1]+b[2]+b[4]+b[12]+b[9]+b[11]+b[13]+b[3]+b[0]+"<\/a>";
+
+document.getElementById('ophyscator').innerHTML = str;
 </script>
 <noscript>
-<p>Sorry, you need to have JavaScript enabled to get the mail address</p></noscript></ins> 
- 
+<p>Sorry, you need to have JavaScript enabled to get the mail address</p></noscript>
+</ins>
 
-<p style="text-align: right; font-size: smaller;"><a href="#top">Top</a></p> 
-</div> 
- 
-<div style="text-align: center;"> 
-	<hr style="width: 80%;" /> 
-	<hr style="width: 65%;" /> 
-Last modified 07/30/2012 
-</div> 
+<p style="text-align: right; font-size: smaller;"><a href="#top">Top</a></p>
+</div>
 
-<p style="position: absolute;bottom: .05em;right: 1.5em; position: fixed;"> 
+<div style="text-align: center;">
+	<hr style="width: 80%;" />
+	<hr style="width: 65%;" />
+Last modified 04/24/2015
+</div>
+
+<p style="position: absolute;bottom: .05em;right: 1.5em; position: fixed;">
 <a href="https://github.com/stefanSchinkel" style="text-decoration:none;">
-    <img style="border:0;width:88px;height:36px" src="img/GitHubLogo.png" alt="GitHub" 
+    <img style="border:0;width:88px;height:36px" src="img/GitHubLogo.png" alt="GitHub"
         title="Find me on github"/></a><br />
-<!-- 
-    <a href="http://validator.w3.org/check?uri=referer"> 
-    <img style="border:0;width:88px;height:31px" src="img/valid.png" alt="Valid XHTML 1.0 Strict" /></a><br /> 
-
-    <a href="http://jigsaw.w3.org/css-validator/"> 
-    <img style="border:0;width:88px;height:31px" src="img/vcss.gif" alt="Valid CSS!" /></a><br /> 
- -->
-
-</p> 
+</p>
 
 
-</body> 
-</html>							 	
+</body>
+</html>

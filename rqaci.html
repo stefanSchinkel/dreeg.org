@@ -1,15 +1,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml"> 
-<head> 
-	<title> 
-		RQACI- estimate confidence bounds of recurrence-based complexity measures	</title> 
-	<meta name="author" content="stefan schinkel" /> 
-	<meta name="Keywords" content=" Nonlinear Dynamics Group, EEG, ERP, RQA" /> 
-	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" /> 
-	<meta name="robots" content="index" /> 
-	<link rel="stylesheet" type="text/css" href="src/style.css" /> 
-	<link rel="shortcut icon" href="img/favicon.ico" /> 
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>
+		RQACI- estimate confidence bounds of recurrence-based complexity measures	</title>
+	<meta name="author" content="stefan schinkel" />
+	<meta name="Keywords" content=" Nonlinear Dynamics Group, EEG, ERP, RQA" />
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+	<meta name="robots" content="index" />
+	<link rel="stylesheet" type="text/css" href="src/style.css" />
+	<link rel="shortcut icon" href="img/favicon.ico" />
 <!-- 	<link rel="shortcut icon" href="img/favicon.ico" /> //-->
 
 <!-- lightbox //-->
@@ -28,14 +28,14 @@
   ga('send', 'pageview');
 
 </script>
-</head> 
-<body> 
- 
- 
-<div class="banner"> 
-	<p> 
-<!-- 		<img src="img/freebsd.png" style="float:none" alt="A daemon" 
-		title="I'm a dang sight cuter than that penguin with the Huge Butt."/> 
+</head>
+<body>
+
+
+<div class="banner">
+	<p>
+<!-- 		<img src="img/freebsd.png" style="float:none" alt="A daemon"
+		title="I'm a dang sight cuter than that penguin with the Huge Butt."/>
 		<br /> -->
 		<a href="index.html">Home</a> 	<br />
 		<a href="#about">About</a>		<br />
@@ -43,57 +43,57 @@
 		<a href="#requirements">Requirements</a> 	<br />
 		<a href="#example">Example</a>			<br />
 		<a href="#download">Download</a>		<br />
-		<a href="#questions">Questions?</a>		<br />	
-	</p> 
-</div> 
- 
- 
-<div class="content"> 
-<h3 class="subheading"> 
+		<a href="#questions">Questions?</a>		<br />
+	</p>
+</div>
+
+
+<div class="content">
+<h3 class="subheading">
 	RQACI
-</h3>	
+</h3>
 
 <h4 class="subheading"> About:</h4>	<a name="about"></a>
-<p> RQACI - routines to estimate confidence bounds of recurrence-based 
-complexity measures</p> 
+<p> RQACI - routines to estimate confidence bounds of recurrence-based
+complexity measures</p>
 
 <p> If you use this software for data analysis and publication please cite: <span class="bold">S. Schinkel</span>, N. Marwan, O. Dimigen and J. Kurths (2009) <em>Confidence bounds of recurrence-based complexity measures</em>,
-<a href="http://www.elsevier.com/locate/pla">Physics Letters A</a>, 373(26), pp. 2245-2250. <a href="http://dx.doi.org/10.1016/j.physleta.2009.04.045">DOI:10.1016/j.physleta.2009.04.045</a> 
+<a href="http://www.elsevier.com/locate/pla">Physics Letters A</a>, 373(26), pp. 2245-2250. <a href="http://dx.doi.org/10.1016/j.physleta.2009.04.045">DOI:10.1016/j.physleta.2009.04.045</a>
 </p>
 
-<h4 class="subheading"> Contents:</h4><a name="contents"></a>	
+<h4 class="subheading"> Contents:</h4><a name="contents"></a>
 
 <dl>
-	<dt>rqaci.m</dt>    
+	<dt>rqaci.m</dt>
 	<dd> - The core routine</dd>
-	<dt>lineDists.m</dt>      
+	<dt>lineDists.m</dt>
 	<dd> - function to extract lines structures from RPs</dd>
-	<dt>bootstrap.m</dt>      
+	<dt>bootstrap.m</dt>
 	<dd> - function to bootstrap a distribution</dd>
-	<dt>ciplot.m</dt>         
+	<dt>ciplot.m</dt>
 	<dd> - routine for plot confidence intervals</dd>
-	<dt>cicompare.m</dt>      
+	<dt>cicompare.m</dt>
 	<dd> - routine for comparing overlap confidence intervals</dd>
 	<dt>rqaciGUI.m</dt>
 	<dd> - graphical frontend (GUI) to rqaci</dd>
 	<dt>rqaciGUILayout.m</dt>
-	<dd> - layout of the GUI</dd>	
+	<dd> - layout of the GUI</dd>
 </dl>
 
-<h4 class="subheading"> Requirements:</h4><a name="requirements"></a>	
+<h4 class="subheading"> Requirements:</h4><a name="requirements"></a>
 <ul>
-	<li><a href="http://www.mathworks.com/products/matlab/">MATLAB</a> 
+	<li><a href="http://www.mathworks.com/products/matlab/">MATLAB</a>
 	(I use 2007, 2010a and 2010b so those should work, as well as any recent version)</li>
 	<li>the <a href="http://tocsy.pik-potsdam.de/CRPtoolbox/">CRPtoolbox </a>
 	(to construct RPs) -- unless you do this yourself</li>
 	<li>a function to estimate percentiles -- either from the Statistics Toolbox of MATLAB
 	or use the stand-in below</li>
 
-	
+
 </ul>
 
 
-<h4 class="subheading"> Example:</h4><a name="example"></a>	
+<h4 class="subheading"> Example:</h4><a name="example"></a>
 <a href="img/rqaci.png" rel="lightbox" title="the GUI in action">
 <img src="img/rqaci.png" width="400" alt="The GUI for rqaci" /></a>
 
@@ -102,7 +102,7 @@ To compute the logistic map, save the function below so that it is accessible fo
 <pre>
 function out = logistic(varargin)
 
-% get params 
+% get params
 varargin{4} =[];
 if ~isempty(varargin{1}), x0=varargin{1};else x0=rand;end
 if ~isempty(varargin{2}), a=varargin{2};else a=3.5;end
@@ -127,7 +127,7 @@ x = x(end-900+1:end);
 
 % transition case
 y1 = logistic(rand(1),3.40,5000); % periodic
-y2 = logistic(rand(1),3.89,5000); % random	
+y2 = logistic(rand(1),3.89,5000); % random
 y3 = logistic(rand(1),3.40,5000); % periodic
 
 % concat segments
@@ -160,10 +160,10 @@ their  confindence intervals for each window</p>
 <pre>
 for iFrame = 1:step:length(x)-win
 	rpX = crp(x(iFrame:iFrame+win),dim,tau,thresh,norm,'sil');
-	rpY = crp(y(iFrame:iFrame+win),dim,tau,thresh,norm,'sil');	
+	rpY = crp(y(iFrame:iFrame+win),dim,tau,thresh,norm,'sil');
 	[valX(iFrame,:) ciX(iFrame,:,:)] = rqaci(rpX,750,1);
 	[valY(iFrame,:) ciY(iFrame,:,:)] = rqaci(rpY,750,1);
-end	
+end
 </pre>
 <p>Now plot the confidence intervals</p>
 <pre>
@@ -176,49 +176,47 @@ ciplot(ciY(1:step:end,1,:),'r')
 rqaciGUI(x,y)
 </pre>
 
-<h4 class="subheading"> Download:</h4><a name="download"></a>	
+<h4 class="subheading"> Download:</h4><a name="download"></a>
 	<a href="download/rqaci.zip">rqaci.zip</a>&nbsp;&nbsp;&nbsp;version:bb5a...f838 &nbsp;
 	&nbsp;&nbsp;&nbsp;md5: b3978a041cecad1ffe811f99f86f7f99 <br />
 	<a href="download/prctile.m">prctile.m</a>&nbsp;&nbsp;&nbsp;version:bb5a...f838 &nbsp;
-	&nbsp;&nbsp;&nbsp;md5: d8a7d1393edc437befcfd1d7b7ee0959 <br /> 
+	&nbsp;&nbsp;&nbsp;md5: d8a7d1393edc437befcfd1d7b7ee0959 <br />
 	(stand-in for prctile.m if Statistics Toolbox is not installed -- found on the net and modified by me)<br />
 
 <h4 class="subheading"> Questions/Requests? :</h4>	<a name="questions"></a>
 
 <ins>
+<span style="display:inline;" id="ophyscator"></span>
 <script type="text/javaScript">
-<!--
-var a = new Array('l','h','h','e','s','.','i','l','n','h','i','p','u','d','e','@','i','s','r','k','.','c','y','-','k','b','e','n');
-var b = new Array('.','n','d','@','y','r','i','p','.','i','l','l','s','c','i','b','h','k','e','e','s','-','e','u','h','h','k','n');
-document.write("<a href='mailto:"+a[4]+a[21]+a[2]+a[10]+a[27]+a[24]+a[26]+a[7]+a[15]+a[11]+a[9]+a[22]+a[17]+a[16]+a[19]+a[20]+a[1]+a[12]+a[23]+a[25]+a[3]+a[18]+a[0]+a[6]+a[8]+a[5]+a[13]+a[14]+"'>");
-document.write(b[12]+b[13]+b[24]+b[6]+b[27]+b[17]+b[22]+b[10]+b[3]+b[7]+b[25]+b[4]+b[20]+b[9]+b[26]+b[8]+b[16]+b[23]+b[21]+b[15]+b[19]+b[5]+b[11]+b[14]+b[1]+b[0]+b[2]+b[18]+"<\/a>");//-->
+
+var a = new Array('d','r','g','e','i','g','@','o','e','r','m','.','l','a');
+var b = new Array('g','d','r','r','e','@','a','l','m','g','i','.','e','o');
+var str = "<a href='mailto:"+a[10]+a[13]+a[4]+a[12]+a[6]+a[0]+a[1]+a[3]+a[8]+a[2]+a[11]+a[7]+a[9]+a[5]+"'>"+b[8]+b[6]+b[10]+b[7]+b[5]+b[1]+b[2]+b[4]+b[12]+b[9]+b[11]+b[13]+b[3]+b[0]+"<\/a>";
+
+document.getElementById('ophyscator').innerHTML = str;
 </script>
 <noscript>
-<p>Sorry, you need to have JavaScript enabled to get the mail address</p></noscript></ins> 
- 
+<p>Sorry, you need to have JavaScript enabled to get the mail address</p></noscript>
+</ins>
 
-<p style="text-align: right; font-size: smaller;"><a href="#top">Top</a></p> 
-</div> 
- 
-<div style="text-align: center;"> 
-	<hr style="width: 80%;" /> 
-	<hr style="width: 65%;" /> 
-Last modified 05/23/2012 
-</div> 
 
-<p style="position: absolute;bottom: .05em;right: .3em; position: fixed;"> 
+
+<p style="text-align: right; font-size: smaller;"><a href="#top">Top</a></p>
+</div>
+
+<div style="text-align: center;">
+	<hr style="width: 80%;" />
+	<hr style="width: 65%;" />
+Last modified 04/24/2015
+</div>
+
+<p style="position: absolute;bottom: .05em;right: .3em; position: fixed;">
 <a href="https://github.com/stefanSchinkel" style="text-decoration:none;">
-	<img style="border:0;width:88px;height:36px" src="img/GitHubLogo.png" alt="GitHub" 
+	<img style="border:0;width:88px;height:36px" src="img/GitHubLogo.png" alt="GitHub"
 		title="Find me on github"/></a><br />
-<!-- 
-	<a href="http://validator.w3.org/check?uri=referer"> 
-	<img style="border:0;width:88px;height:31px" src="img/valid.png" alt="Valid XHTML 1.0 Strict" /></a><br /> 
 
-	<a href="http://jigsaw.w3.org/css-validator/"> 
-	<img style="border:0;width:88px;height:31px" src="img/vcss.gif" alt="Valid CSS!" /></a><br /> 
- -->
 
-</p> 
+</p>
 
-</body> 
-</html>							 	
+</body>
+</html>
