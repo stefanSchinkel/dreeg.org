@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Stefan Schinkel</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+</head>
+
+  <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand page-scroll" href="#page-top">Stefan Schinkel</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+          <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+          <li class="hidden">
+            <a class="page-scroll" href="#page-top"></a>
+          </li>
+          <li>
+            <a class="dropdown-toggle" href="#software">Software</a>
+     <!--        <ul class="dropdown-menu">
+              <li><a href="#software"><span>BVA loader</span></a></li>
+              <li><a href="bvarename.html"><span>BVA rename</span></a></li>
+              <li><a href="rqaci.html"><span>RQAci</span></a></li>
+              <li><a href="rqagui.html"><span>RQA Gui</span></a></li>
+            </ul> -->
+          </li>
+          <li>
+            <a class="page-scroll" href="#papers">Publications</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#talks">Talks</a>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+  </nav>
+
+  <!-- Intro Section -->
+  <section id="intro" class="intro-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>Stefan Schinkel</h2>
+          <strong>
+            <span style="display:inline;" id="ophyscator"></span>
+          </strong>
+          <script type="text/javaScript">
+            var a = new Array('g','e','d','r','l','o','a','m','.','i','g','e','r','@');
+            var b = new Array('g','a','l','d','e','.','@','g','m','r','r','e','o','i');
+            var str = "<a href='mailto:"+a[7]+a[6]+a[9]+a[4]+a[13]+a[2]+a[12]+a[11]+a[1]+a[0]+a[8]+a[5]+a[3]+a[10]+"'>"+b[8]+b[1]+b[13]+b[2]+b[6]+b[3]+b[9]+b[11]+b[4]+b[7]+b[5]+b[12]+b[10]+b[0]+"</a>";
+
+            document.getElementById('ophyscator').innerHTML = str;
+          </script>
+          <noscript>
+            <p>Sorry, you need to have JavaScript enabled to get the mail address</p>
+          </noscript>
+          <a href="download/stefanSchinkel.asc"><abbr title="Pretty Good Privacy" class="initialism">PGP</abbr> key </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Software Section -->
+  <section id="software" class="software-section">
+    <div class="container">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8 text-left">
+      <h1>Software</h1>
+        <ul>
+          <li>
+            <span class="bold">&raquo; <a href="rqagui.html"> rqaGui</a></span>
+            &mdash; a simple graphical frontend to the <a href="http://tocsy.pik-potsdam.de/commandline-rp.php">Recurrence Plot binary</a> (Python)<br />
+          </li>
+
+          <li>
+            <span class="bold">&raquo; <a href="rqaci.html">rqaci</a></span><a name="rqaci"></a>&mdash; functions to compute confidence bounds of RQA measures (Matlab)<br />
+          </li>
+
+          <li>
+           <span class="bold">&raquo;<a href="bvarename.html">bvaRename</a></span>
+           &mdash; rename BrainVision .eeg files and update corresponding header/marker (.vhdr/.vmrk) files (Python)<br />
+         </li>
+
+         <li>
+           <span class="bold">&raquo;  <a href="bvaloader.html">bvaloader</a></span>
+           &mdash; import and epoch Brain Vision data without EEGlab (Matlab)<br />
+         </li>
+
+         <!-- things directly loadable //-->
+          <li>
+              <a name="pent"></a>
+              <span class="bold"><a class="download" href="download/pent.m">pent.m</a> </span> (O’Hora et al, 2013)  &mdash; function to compute permutation entropy of a time series (Matlab)
+          </li>
+          <li>
+              <a name="orpan"></a>
+              <span class="bold"><a class="download" href="download/orpan.m">orpan.m</a> </span> (Schinkel et al, 2012) &mdash; function to compute order pattern networks (Matlab)<br />
+          </li>
+
+          <li>
+            <a name="jrpmat"></a>
+            <a  class="download"  href="download/jrpmat.zip"> jrpmat.zip</a> </span> (Schinkel et al, 2011) &mdash; functions compute recurrence-based networks (Matlab)<br />
+            <ul>
+              <li>to compute connected/network components a Floyd-Warshall algorithm is required (<a class="external" href="http://www.mathworks.com/matlabcentral/fileexchange/25776" title="Vectorized (fast) implementation of the Floyd-Warshall algorithm">Fast Floyd</a>)<br />
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <span class="bold">
+            <a class="download" href="download/edfreader.m">edfreader.m</a> </span> &mdash; function to import EDF/EDF+ data (Matlab)<br />
+           </li>
+
+          <li>
+            <span class="bold">
+            <a class="download" href="download/bdfreader.m">bdfreader.m</a> </span> &mdash; function to import BDF data, optimized for BioSemi data w/ respect to trigger extraction  (Matlab)<br />
+           </li>
+
+          <li>
+           <span class="bold">
+           <a class="download" href="download/ptest.m">ptest.m</a> </span>
+           &mdash; a simple permutation test for comparision of means (Matlab)
+          </li>
+
+          <li>
+            <span class="bold">
+            <a  class="github" href="https://github.com/stefanSchinkel/pytex">pytex</a></span>&mdash; a very thin wrapper for <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> and <span class="latex">B<span style="font-variant:small-caps;">ib</span>T<sub>e</sub>X</span> (Python)<br />
+          </li>
+
+          <li>
+            <span class="bold">
+            <a class="github" href="https://gist.github.com/stefanSchinkel/5490968">a2book</a></span> &mdash; convert a(ny) file to print as a booklet on an A4 duplex printer (shell)<br />
+          </li>
+
+          <li>
+            <span class="bold">
+            <a class="github" href="https://gist.github.com/stefanSchinkel/b403d3b305515caaf32d">findRequiredFunctions</a></span>
+            &mdash; A simple matlab function to solve the dependencies for a function, can be useful when deploying a single function from a larger package (Matlab)
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
+  </section>
+
+  <!-- Papers Section -->
+  <section id="papers" class="papers-section">
+    <div class="container">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8 text-left">
+        <h1>Publications</h1>
+        <p><span class="bold">S. Schinkel</span>, G. Ivanova, J. Kurths and W. Sommer (2014) <em> Modulation of the N170 adaptation profile by higher level factors</em> <a href="http://www.journals.elsevier.com/biological-psychology/">Biological Psychology</a> 97, pp. 27-–34. <a href="http://dx.doi.org/10.1016/j.biopsycho.2014.01.003">doi: 10.1016/j.biopsycho.2014.01.003</a>
+        <p>D. O’Hora, <span class="bold">S. Schinkel</span>, M. J. Hogan, L. Kilmartin, M. Keane, R. Lai and N. Upton (2013) <em>Age-Related Task Sensitivity of Frontal EEG Entropy During Encoding Predicts Retrieval</em>, <a href="http://link.springer.com/journal/10548">Brain Topography</a>, <a href="http://dx.doi.org/10.1007/s10548-013-0278-x">doi: 10.1007/s10548-013-0278-x</a> <a href="#pent"><span class="bold" style="color:black;">&raquo;Software &laquo;</span></a></p>
+        <p>N. Marwan, <span class="bold">S. Schinkel</span> and J. Kurths (2013) <em>Recurrence plots 25 years later: Gaining confidence in dynamical transitions</em>, <a href="http://www.epljournal.org/">EPL</a> 101(20007), <a href="http://dx.doi.org/10.1209/0295-5075/101/20007">doi: 10.1209/0295-5075/101/20007</a></p>
+        <p><span class="bold">S. Schinkel</span>, G. Zamora-L&oacute;pez, O. Dimigen, W. Sommer and J. Kurths (2012) <em> Order Patterns Networks (ORPAN) - a method to estimate time-evolving functional connectivity from multivariate time series</em>, <a href="http://www.frontiersin.org/Computational_Neuroscience">Front. Comput. Neurosci.</a>, 6(91), <a href="http://dx.doi.org/10.3389/fncom.2012.00091">doi: 10.3389/fncom.2012.00091</a> <a href="#orpan"><span class="bold" style="color:black;">&raquo; Software &laquo;</span></a> <a href="supplements/frontiers.html"><span class="bold" style="color:black;">&raquo; supplement &laquo;</span></a></p>
+        <p>J. Kurths, N. Marwan, M. Riedl and <span class="bold">S. Schinkel</span> (2012) <em>Complex Synchronization and Recurrence Analyses &ndash; are such Nonlinear Techniques Useful for Brain Oscillation Studies?,</em> Biomedical Engineering/ Biomedizinische Technik, 57(386) .<a href="http://dx.doi.org/10.1515/bmt-2012-4537">doi: 10.1515/bmt-2012-4537</a></p>
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
+  </section>
+
+  <!-- Talks Section -->
+  <section id="talks" class="talks-section">
+    <div class="container">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8 text-left">
+        <h1>Talks and Presentations</h1>
+      <div class="col-lg-2"></div>
+    </div>
+  </section>
+
+  <!-- jQuery -->
+  <script src="js/jquery.js"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <!-- Scrolling Nav JavaScript -->
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/scrolling-nav.js"></script>
+
+</body>
+</html>
