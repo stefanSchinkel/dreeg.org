@@ -29,28 +29,14 @@ html {
 The padding is very important to make sure the scrollspy picks up the right area when scrolled to. Adjust the margin and padding of sections and children
 of those sections to manage the look and feel of the site. */
 
-.intro-section {
+.intro-section, .papers-section, .contact-section {
     height: 100%;
     padding-top: 150px;
     text-align: center;
-    background: #fff;
+    background: #red;
 }
 
-.software-section {
-    height: 100%;
-    padding-top: 150px;
-    text-align: center;
-    background: #eee;
-}
-
-.papers-section {
-    height: 100%;
-    padding-top: 150px;
-    text-align: left;
-    background: #fff;
-}
-
-.talks-section {
+.software-section, .talks-section {
     height: 100%;
     padding-top: 150px;
     text-align: center;
@@ -60,7 +46,7 @@ of those sections to manage the look and feel of the site. */
 /*
  * other tweaks
 */
-}
+
 #header{
 	font-weight: bold;
 	font-size: x-large;
@@ -84,7 +70,7 @@ of those sections to manage the look and feel of the site. */
 	font-size: small;
 }
 
-}td{
+td{
 	padding-left: .5em;
 	padding-right: .5em;
 
@@ -157,13 +143,13 @@ a:hover{
 
 a.download {
 background: url(../img/download.png) left center no-repeat;
-padding-left: 1.2em; /* Linktext einrücken */
+padding-left: 1.5em; /* Linktext einrücken */
 text-decoration: underline;
 }
 
 a.internal {
 background: url(../img/internal.png) left center no-repeat;
-padding-left: 1.1em; /* Linktext einrücken */
+padding-left: 2em; /* Linktext einrücken */
 text-decoration: underline;
 }
 
@@ -175,7 +161,7 @@ text-decoration: underline;
 a.github {
 background: url(../img/github.png)  left center no-repeat;
 display:inline-block;
-padding-left: 1.1em; /* Linktext einrücken */
+padding-left: 1.5em; /* Linktext einrücken */
 text-decoration: underline;
 
 }
