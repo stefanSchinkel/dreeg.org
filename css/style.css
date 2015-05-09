@@ -25,9 +25,7 @@ html {
     }
 }
 
-/* Demo Sections - You can use these as guides or delete them - the scroller will work with any sort of height, fixed, undefined, or percentage based.
-The padding is very important to make sure the scrollspy picks up the right area when scrolled to. Adjust the margin and padding of sections and children
-of those sections to manage the look and feel of the site. */
+/* Define section - colors alternate between pages */
 
 .intro-section, .papers-section, .contact-section {
     height: 100%;
@@ -142,27 +140,27 @@ a:hover{
 }
 
 a.download {
-background: url(../img/download.png) left center no-repeat;
-padding-left: 1.5em; /* Linktext einrücken */
-text-decoration: underline;
+/*background: url(../img/download.png) left center no-repeat;*/
+
+padding-left: .25em;
+font-weight: bolder;
 }
 
 a.internal {
 background: url(../img/internal.png) left center no-repeat;
-padding-left: 2em; /* Linktext einrücken */
-text-decoration: underline;
+padding-left: 2em;
 }
 
 a.external {
 background: url(../img/external.png) right center no-repeat;
 padding-right: 1.1em; /* Linktext einrücken */
-text-decoration: underline;
+
 }
 a.github {
 background: url(../img/github.png)  left center no-repeat;
 display:inline-block;
-padding-left: 1.5em; /* Linktext einrücken */
-text-decoration: underline;
+padding-left: 1.5em;
+font-weight: bolder;
 
 }
 
