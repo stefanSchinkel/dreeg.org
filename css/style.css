@@ -1,166 +1,116 @@
 /*
  * Start Bootstrap - Scrolling Nav
-*/
+ */
 
-body {
-    width: 100%;
-    height: 100%;
+ body {
+  width: 100%;
+  height: 100%;
 }
 
 html {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 @media(min-width:767px) {
-    .navbar {
-        padding: 20px 0;
-        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
-        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
-        transition: background .5s ease-in-out,padding .5s ease-in-out;
-    }
+  .navbar {
+    padding: 20px 0;
+    -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+    -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+    transition: background .5s ease-in-out,padding .5s ease-in-out;
+  }
 
-    .top-nav-collapse {
-        padding: 0;
-    }
+  .top-nav-collapse {
+    padding: 0;
+  }
 }
 
 /* Define section - colors alternate between pages */
 
 .intro-section, .papers-section, .contact-section {
-    height: 100%;
-    padding-top: 150px;
-    text-align: center;
-    background: #fff;
+  height: 100%;
+  padding-top: 150px;
+  text-align: center;
+  background: #fff;
 }
 
 .software-section, .talks-section {
-    height: 100%;
-    padding-top: 150px;
-    text-align: center;
-    background: #eee;
+  height: 100%;
+  padding-top: 150px;
+  text-align: center;
+  background: #eee;
 }
 
 /*
  * other tweaks
-*/
+ */
 
-#header{
-	font-weight: bold;
-	font-size: x-large;
-	color: black;
-}
-.subheading{
-	background-color:DarkGray;
-	color:#fffff0;
-	padding-left:10px;
-}
-.bold{
-	font-weight: bold;
-}
+ #header{
+   font-weight: bold;
+   font-size: x-large;
+   color: black;
+ }
+ .subheading{
+   background-color:DarkGray;
+   color:#fffff0;
+   padding-left:10px;
+ }
+ .bold{
+   font-weight: bold;
+ }
 
-.boldRed{
-	font-weight: bold;
-	color: red;
-}
+ .boldRed{
+   font-weight: bold;
+   color: red;
+ }
 
-.small{
-	font-size: small;
-}
+ .small{
+   font-size: small;
+ }
 
-td{
-	padding-left: .5em;
-	padding-right: .5em;
+ td{
+   padding-left: .5em;
+   padding-right: .5em;
 
-}
-li{
-	margin-bottom: .5em;
-}
-div.banner {
-  	margin: 0;
-  	font-size: 90%;
-  	font-weight: bold;
-  	line-height: 1.1;
-  	text-align: center;
-  	position: fixed;
-  	top: 2em;
-  	left: auto;
-  	width: 8em;
-  	right: 2em;
-  	border: none;
-	background-color:#fffff0;
-}
-div.banner p {
-	padding: .3em .3em .3em .3em;
- 	font-family: sans-serif;
-	background-color:#fffff0;
-  	color: white;
-}
+ }
+ li{
+   margin-bottom: .25em;
+ }
 
-div.banner a {
-	text-decoration: none;
-	padding-top: .25em;
-	padding-bottom: .25em;
-	border-top: 1px solid gray;
-	border-bottom: 1px solid gray;
-	display: block;
-	color: black;
-}
-div.banner a:hover {
-	text-decoration: none;
-	color: GhostWhite;
-	background: darkGray;
-}
-div.banner p:first-child{
-	padding-top: 1em;
-	border-top:none;
+
+ .images {
+   position: absolute;
+   bottom: .05em;
+   left: 1em;
+   position: fixed;
+ }
+
+
+ a{
+   color: #778899;
+   text-decoration: none;
+ }
+ a:hover{
+
+   background-color: lightGray;
+ }
+
+ a.download {
+  padding-left: .25em;
+  font-weight: bolder;
 }
 
-.images {
-	position: absolute;
-	bottom: .05em;
-	left: 1em;
-	position: fixed;
-}
-
-pre {
-	overflow:auto;
-	background-color: black;
-	color: #F8F8FF;
-	padding: 1ex 0 1ex 1em;
-}
-
-a{
-	color: #778899;
-	text-decoration: none;
-}
-a:hover{
-
-	background-color: lightGray;
-}
-
-a.download {
-/*background: url(../img/download.png) left center no-repeat;*/
-
-padding-left: .25em;
-font-weight: bolder;
-}
-
-a.internal {
-background: url(../img/internal.png) left center no-repeat;
-padding-left: 2em;
-}
 
 a.external {
-background: url(../img/external.png) right center no-repeat;
-padding-right: 1.1em; /* Linktext einrücken */
+  background: url(../images/external.png) right center no-repeat;
+  padding-right: 1.1em; /* Linktext einrücken */
 
 }
 a.github {
-background: url(../img/github.png)  left center no-repeat;
-display:inline-block;
-padding-left: 1.5em;
-font-weight: bolder;
+  background: url(../images/github.png)  left center no-repeat;
+  display:inline-block;
+  padding-left: 1.5em;
+  font-weight: bolder;
 
 }
 
@@ -184,23 +134,23 @@ font-weight: bolder;
 
 }
 a:hover img {
-border: none !important;
-display: block;
+  border: none !important;
+  display: block;
 }
 
 /* layout for supplement images */
 .img{
-	float:left;
-	margin-top:250px;
-	padding:12px;
-	width:200px;
+  float:left;
+  margin-top:250px;
+  padding:12px;
+  width:200px;
 }
 .imgText{
-	float:left;
-	margin-top:250px;
-	padding:12px;
-	margin-bottom:50px;
-	width:35%;
-	font-weight:bold;
-	font-size:13px;
+  float:left;
+  margin-top:250px;
+  padding:12px;
+  margin-bottom:50px;
+  width:35%;
+  font-weight:bold;
+  font-size:13px;
 }
