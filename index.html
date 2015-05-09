@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" type="image/vnd.microsoft.icon" href="images/icon.gif">
+
+  <title>dreeg.org</title>
+
+  <!-- Bootstrap Core CSS  and custom-->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+</head>
+
+  <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand page-scroll" href="#page-top">dreeg.org</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+          <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+          <li class="hidden">
+            <a class="page-scroll" href="#page-top"></a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#software">Software</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#papers">Publications</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#talks">Talks</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+  </nav>
+
+  <!-- Intro Section -->
+  <section id="intro" class="intro-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-12">
+          <img src="images/munching.gif" alt="Y = X XOR T" width="350" height="350" />
+          <h2>dreeg.org</h2>
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Software Section -->
+  <section id="software" class="software-section">
+    <div class="container">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8 text-left">
+      <h2>Software</h2>
+        <ul>
+          <li>
+            <a class="github" href="https://github.com/stefanSchinkel/rqaGui">rqaGui</a>
+            &mdash; a simple graphical frontend to the <a href="http://tocsy.pik-potsdam.de/commandline-rp.php">Recurrence Plot binary</a> (Python)<br />
+          </li>
+
+          <li>
+            <a class="github" href="https://github.com/stefanSchinkel/rqaci">rqaci</a></span>&mdash; functions to compute confidence bounds of RQA measures (Matlab)<br />
+          </li>
+
+          <li>
+           <a class="github" href="https://github.com/stefanSchinkel/bvarenamer">bvarenamer</a>
+           &mdash; renaming tool for  BrainVision file (Python)<br />
+         </li>
+
+         <li>
+           <a class="github"  href="https://github.com/stefanSchinkel/bvaloader">bvaloader</a>
+           &mdash; import and epoch Brain Vision data without EEGlab (Matlab)<br />
+         </li>
+
+         <!-- things directly loadable //-->
+          <li>
+            <span class="glyphicon glyphicon-download-alt"></span>
+            <a class="download" href="download/pent.m">pent.m</a> (O’Hora et al, 2013)  &mdash; function to compute permutation entropy of a time series (Matlab)
+          </li>
+          <li>
+            <span class="glyphicon glyphicon-download-alt"></span>
+            <a class="download" href="download/orpan.m">orpan.m</a> (Schinkel et al, 2012) &mdash; function to compute order pattern networks (Matlab)<br />
+          </li>
+
+          <li>
+            <span class="glyphicon glyphicon-download-alt"></span>
+            <a  class="download" href="download/jrpmat.zip"> jrpmat.zip</a> (Schinkel et al, 2011) &mdash; functions compute recurrence-based networks (Matlab)<br />
+            <ul>
+              <li>to compute connected/network components a Floyd-Warshall algorithm is required (<a class="external" href="http://www.mathworks.com/matlabcentral/fileexchange/25776" title="Vectorized (fast) implementation of the Floyd-Warshall algorithm">Fast Floyd</a>)<br />
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <span class="glyphicon glyphicon-download-alt"></span>
+            <a class="download" href="download/edfreader.m">
+            edfreader.m</a> &mdash; function to import EDF/EDF+ data (Matlab)<br />
+           </li>
+
+          <li>
+            <span class="glyphicon glyphicon-download-alt"></span>
+            <a class="download" href="download/bdfreader.m">bdfreader.m</a> &mdash; function to import BDF data, optimized for BioSemi data w/ respect to trigger extraction  (Matlab)<br />
+           </li>
+
+          <li>
+            <span class="glyphicon glyphicon-download-alt"></span>
+            <a class="download" href="download/ptest.m">ptest.m</a>
+           &mdash; a simple permutation test for comparision of means (Matlab)
+          </li>
+
+          <li>
+            <a  class="github" href="https://github.com/stefanSchinkel/pytex">pytex</a>&mdash; a very thin wrapper for <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> and <span class="latex">B<span style="font-variant:small-caps;">ib</span>T<sub>e</sub>X</span> (Python)<br />
+          </li>
+
+          <li>
+            <a class="github" href="https://gist.github.com/stefanSchinkel/5490968">a2book</a> &mdash; convert a(ny) file to print as a booklet on an A4 duplex printer (shell)<br />
+          </li>
+
+          <li>
+            <a class="github" href="https://gist.github.com/stefanSchinkel/b403d3b305515caaf32d">findRequiredFunctions</a>
+            &mdash; A simple, recursive dependency solver for Matlab (Matlab)
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
+  </section>
+
+  <!-- Papers Section -->
+  <section id="papers" class="papers-section">
+    <div class="container" style="padding-top: 5px;  height: 75%; overflow: auto; position: relative;">
+      <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 text-left">
+
+          <h2>Publications</h2>
+
+            <p><span class="bold">S. Schinkel</span>, G. Ivanova, J. Kurths and W. Sommer (2014) <em> Modulation of the N170 adaptation profile by higher level factors</em> <a href="http://www.journals.elsevier.com/biological-psychology/">Biological Psychology</a> 97, pp. 27-–34. <a href="http://dx.doi.org/10.1016/j.biopsycho.2014.01.003">doi: 10.1016/j.biopsycho.2014.01.003</a>
+            <p>D. O’Hora, <span class="bold">S. Schinkel</span>, M. J. Hogan, L. Kilmartin, M. Keane, R. Lai and N. Upton (2013) <em>Age-Related Task Sensitivity of Frontal EEG Entropy During Encoding Predicts Retrieval</em>,<a href="http://link.springer.com/journal/10548">Brain Topography</a>, <a href="http://dx.doi.org/10.1007/s10548-013-0278-x">doi: 10.1007/s10548-013-0278-x</a> <a class="page-scroll" href="#software"><span class="bold" style="color:black;">&raquo;Software &laquo;</span></a></p>
+            <p>N. Marwan, <span class="bold">S. Schinkel</span> and J. Kurths (2013) <em>Recurrence plots 25 years later: Gaining confidence in dynamical transitions</em>, <a href="http://www.epljournal.org/">EPL</a> 101(20007), <a href="http://dx.doi.org/10.1209/0295-5075/101/20007">doi: 10.1209/0295-5075/101/20007</a></p>
+            <p><span class="bold">S. Schinkel</span>, G. Zamora-L&oacute;pez, O. Dimigen, W. Sommer and J. Kurths (2012) <em> Order Patterns Networks (ORPAN) - a method to estimate time-evolving functional connectivity from multivariate time series</em>, <a href="http://www.frontiersin.org/Computational_Neuroscience">Front. Comput. Neurosci.</a>, 6(91), <a href="http://dx.doi.org/10.3389/fncom.2012.00091">doi: 10.3389/fncom.2012.00091</a> <a class="page-scroll" href="#software"><span class="bold" style="color:black;">&raquo; Software &laquo;</span></a> <a href="supplements/frontiers.html" target="_blank"><span class="bold" style="color:black;">&raquo; supplement &laquo;</span></a></p>
+            <p>J. Kurths, N. Marwan, M. Riedl and <span class="bold">S. Schinkel</span> (2012) <em>Complex Synchronization and Recurrence Analyses &ndash; are such Nonlinear Techniques Useful for Brain Oscillation Studies?,</em> Biomedical Engineering/ Biomedizinische Technik, 57(386) .<a href="http://dx.doi.org/10.1515/bmt-2012-4537">doi: 10.1515/bmt-2012-4537</a></p>
+            <p><span class="bold">S. Schinkel</span>, G. Zamora-L&oacute;pez, O. Dimigen, W. Sommer and J. Kurths (2011) <em>Functional network analysis reveals differences in the semantic priming task</em>, <a href="http://www.elsevier.com/locate/jneumeth">Journal of Neuroscience Methods</a>, 197(2), pp.333-339. <a href="http://dx.doi.org/10.1016/j.jneumeth.2011.02.018">doi: 10.1016/j.jneumeth.2011.02.018 </a>&nbsp;&nbsp; <a class="page-scroll" href="#software"><span class="bold" style="color:black;">&raquo; Software &laquo;</span></a></p>
+            <p><span class="bold">S. Schinkel</span> (2010) <em>Single trial analysis of event-related potentials &nbsp;&ndash; a recurrence-based approach &ndash;&nbsp;</em>, PhD thesis, University of Potsdam.</p>
+            <p><span class="bold">S. Schinkel</span>, N. Marwan and J. Kurths (2009) <em> Brain signal analysis based on recurrences</em>,<a href="http://www.elsevier.com/locate/jphysparis">Journal of Physiology - Paris</a>, 103 (6), pp. 315-323. <a href="http://dx.doi.org/10.1016/j.jphysparis.2009.05.007">doi: 10.1016/j.jphysparis.2009.05.007</a></p>
+            <p><span class="bold">S. Schinkel</span>, N. Marwan, O. Dimigen and J. Kurths (2009) <em>Confidence bounds of recurrence-based complexity measures</em>, <a href="http://www.elsevier.com/locate/pla">Physics Letters A</a>, 373(26), pp. 2245-2250. <a href="http://dx.doi.org/10.1016/j.physleta.2009.04.045">doi:10.1016/j.physleta.2009.04.045</a><a class="page-scroll" href="#software"><span class="bold" style="color:black;">&raquo; Software &laquo;</span></a></p>
+            <p><span class="bold">S. Schinkel</span>, O. Dimigen and N. Marwan (2008) <em> Selection of recurrence threshold for signal detection</em>,<a href="http://www.epjst-journal.org/">European Physical Journal &ndash; Special Topics</a>, 164 (1), pp. 45-53. <a href="http://dx.doi.org/10.1140/epjst/e2008-00833-5"> doi: 10.1140/epjst/e2008-00833-5</a></p>
+            <p>N. Marwan, <span class="bold">S. Schinkel</span> and J. Kurths (2008) <em>Significance for a Recurrence Based Transition Analysis</em>, <a href="http://nolta2008.org">Proceedings of International Symposium on Nonlinear Theory and its Applications (NOLTA'08)</a>, pp. 412-415</p>
+            <p><span class="bold">S. Schinkel</span>, N. Marwan and J. Kurths (2008) <em> Symbol-based recurrence analysis of EEG data</em>, Proceedings of the <a href="http://www1.vde.com/Conferences_en/Biosignalverarbeitung2008/Biosignal+Homepage.htm">Biosignalverarbeitung 2008: &quot;Innovationen bei der Erfassung und Analyse bioelektrischer und biomagnetischer Signale&quot;</a></p>
+            <p><span class="bold">S. Schinkel</span>, N. Marwan and J. Kurths (2007) <em>Recurrence Quantification Analysis and its application to ERP data</em>, Proceedings of the 1st Workgroup Meetings of the <a href="http://www.cost.esf.org/">COST </a> <a href="http://www.neuromath.eu/"> Action BM601 Neuromath</a></p>
+           <p><span class="bold">S. Schinkel</span>, N. Marwan and J. Kurths (2007) <em> Order Patterns Recurrence Plots in the Analysis of ERP Data</em>, <a href="http://www.springerlink.com/openurl.asp?genre=journal&amp;issn=1871-4080">Cognitive Neurodynamics</a>, 1(4), pp. 317-325, <a href="http://dx.doi.org/10.1007/s11571-007-9023-z">doi: 10.1007/s11571-007-9023-z &nbsp;</a></p>
+           <p><span class="bold">S. Schinkel</span> (2006) <em>EKP Untersuchung mit Hilfe der quantitativen Analyse von Recurrence Plots</em>, Diplomarbeit (Master's Thesis), University of Potsdam </p>
+
+        </div>
+        <div class="col-lg-1"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Talks Section -->
+  <section id="talks" class="talks-section">
+    <div class="container" style="padding-top: 5px;  height: 75%; overflow: auto; position: relative;">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10 text-left">
+        <h2>Talks and Presentations</h2>
+          <p> September 2012, Hong Kong <a href="http://cns.hkbu.edu.hk/workshop2012/workshop2012.htm">"Biological basis of individual differences in human social communi­cative abilities - quantitative experiments, computational methods and modeling"</a> &mdash; <em>Time-evolving functional brain networks during face and word processing</em></p>
+          <p> September 2012, Berlin, Germany, <a href="http://www.beimgraben.info/partitions2012/">Partition Workshop 2012</a> &mdash; <em>Reconstruction of time-evolving functional brain networks using order patterns</em></p>
+          <p> September 2012, Prague, Czech Republic, <a href="http://nc2012.biomed.cas.cz/"> Tenth International Neural Coding Workshop</a> &mdash; <em>Order patterns networks (ORPAN) – Concept and applications</em></p>
+          <p> May 2012, Vietri sul Mare, Italy, <a href="http://timely-cost.eu/"> TIMELY</a> Workshop on Dynamical systems for psychological timing and timing in speech processing &mdash; <em>Workshop on RQA and EEG</em> &raquo;<a href="timely/html/index.html">Lecture Notes</a> &laquo;</p>
+          <p>May 2011, Thessaloniki, Greece, <a href="http://san2011.org/" > SAN meeting 2011 </a> &mdash; <span class="bold">S. Schinkel</span>, G. Zamora-L&oacute;pez, O. Dimigen, W. Sommer and J. Kurths :<em>Recurrence-based analysis of event-related potentials </em> (Talk)</p>
+          <p>May 2011, Thessaloniki, Greece, <a href="http://san2011.org/" > SAN meeting 2011 </a> &mdash; G. Zamora-L&oacute;pez,<span class="bold"> S. Schinkel</span> and J. Kurths : <em>Recurrent brain states during single-trials and evoked responses </em> (Poster)</p>
+          <p>May 2011, Galway, Ireland &mdash; <span class="bold">S. Schinkel</span>: <em>Recurrence Quantification Analysis:  A nonlinear method of eeg analysis </em> (Hands-on seminar) </p>
+          <p>November 2010, Galway, Ireland &mdash; <span class="bold">S. Schinkel</span>: <em>Recurrence-based analysis of event-related potentials &mdash; When theoretical physics meets experimental psychology</em> (Guest Lecture) </p>
+          <p>August 2009, Montr&eacute;al, QC Canada, <a href="http://symposium.recurrence-plot.tk/">Third international symposium on recurrence plots</a> &mdash; <span class="bold">S. Schinkel</span>, N. Marwan, O. Dimigen and J. Kurths :<em> Confidence Bounds of recurrence-based complexity measures</em> (Talk) </p>
+          <p>October 2008, Potsdam, <a href="http://www.agnld.uni-potsdam.de/~shw/ABSTRACTS/008/DDBB/DDBB.php">Berlin-Brandenburg Dynamic Days</a> &mdash;  <span class="bold">S. Schinkel</span>, N. Marwan and J. Kurths :<em> Confidence Bounds of Univariate Time Series (in terms of complexity measures)</em> (Talk) </p>
+          <p>July 2008, Potsdam, Biosignalverarbeitung 2008: &quot;Innovationen bei der Erfassung und Analyse bioelektrischer undbiomagnetischer  Signale&quot; &mdash;  <span class="bold">S. Schinkel</span>, N. Marwan and J. Kurths :<em> Symbolbasierte Rekurrenzanalysen electroencephalographischer Daten</em> (Talk) </p>
+          <p>July 2008, Potsdam, Biosignalverarbeitung 2008: &quot;Innovationen bei der Erfassung und Analyse bioelektrischer und  biomagnetischer  Signale&quot; &mdash; N. Marwan and <span class="bold">S. Schinkel</span> :  <em> A statistical test for a recurrence based transition analysis of brain signals</em> (Poster) </p>
+          <p>April 2008, Vienna, General Assembly of EGU &mdash; N. Marwan, <span class="bold">S. Schinkel</span>, J. Kurths, and M. Trauth :  <em> Significance for a recurrence based transition analysis</em> (Talk)</p>
+          <p>April 2008, Potsdam, EEG-Workshop of the <a href="http://mbd.uni-potsdam.de/">  DFG Research Group (FOR868) Mind and Brain Dynamics</a> &mdash;  <span class="bold">S. Schinkel</span>, N. Marwan and J. Kurths :  <em> Ordinal time series analysis and its application to ERP data</em> (Talk)</p>
+          <p>December 2007, Rome, Workshop of the COST Action BM601 Neuromath   &mdash;  <span class="bold">S. Schinkel</span>, N. Marwan and J. Kurths :<em> Recurrence  Quantification Analysis and its application to ERP data</em> (Talk)</p>
+          <p>October 2007, Potsdam,  Third Conference of the BioSim EU Network of Excellence &mdash;  <span class="bold">S. Schinkel</span>, N. Marwan and J. Kurths  :  <em> TOCSY - Toolboxes for data analysis in BioSim</em> (Talk)</p>
+          <p>July 2006, Liebenwalde, Third Workshop of the "International Graduate School Computational  Neuroscience of Behavioural and Cognitive Dynamics" &mdash;  <span class="bold">S. Schinkel</span>, N. Marwan and J. Kurths :  <em> Advanced ERP Analysis by means of Recurrence Quantification Analysis (RQA)</em> (Talk)</p>
+          <p> July 2006, Potsdam, Workshop Biosignalverarbeitung: &quot;Impulsgeber in der Biomedizinischen Technik - aktueller Stand,  neue Entwicklungen und Tendenzen&quot; &mdash; N. Marwan, <span class="bold">S. Schinkel</span> and J. Kurths :  <em>Recurrence-Plot-basierte Biosignalverarbeitung</em> (Talk) </p>
+          <p>April 2006, Potsdam, PhD days of the "Nonlinear Dynamics Group"  &mdash;  <span class="bold">S. Schinkel</span>, N. Marwan and J. Kurths  :  <em>Analysing Single-Trial Event Related Potentials (ERP) by means of Recurrence Quantification Analysis (RQA)</em> (Talk)</p>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>Stefan Schinkel</h2>
+            <strong><span style="display:inline;" id="ophyscator"></span></strong>
+            <script type="text/javaScript">
+              var a = new Array('g','e','d','r','l','o','a','m','.','i','g','e','r','@');
+              var b = new Array('g','a','l','d','e','.','@','g','m','r','r','e','o','i');
+              var str = "<a href='mailto:"+a[7]+a[6]+a[9]+a[4]+a[13]+a[2]+a[12]+a[11]+a[1]+a[0]+a[8]+a[5]+a[3]+a[10]+"'>"+b[8]+b[1]+b[13]+b[2]+b[6]+b[3]+b[9]+b[11]+b[4]+b[7]+b[5]+b[12]+b[10]+b[0]+"</a>";
+
+              document.getElementById('ophyscator').innerHTML = str;
+            </script>
+            <noscript>
+              <p>Sorry, you need to have JavaScript enabled to get the mail address</p>
+            </noscript>
+            <a href="download/stefanSchinkel.asc"><abbr title="Pretty Good Privacy" class="initialism">PGP</abbr> key </a>
+            <br/>
+         </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Scrolling Nav-->
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/scrolling-nav.js"></script>
+
+</body>
+</html>
