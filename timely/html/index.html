@@ -87,7 +87,7 @@ p.footer {
 
 <span class="comment">% To get a head start we can use precomputed data</span>
 <span class="comment">% stored on my website</span>
-url= <span class="string">'http://people.physik.hu-berlin.de/~schinkel/timely/lorenz.dat'</span>;
+url= <span class="string">'http://dreeg.org/timely/lorenz.dat'</span>;
 x = urlread(url);
 <span class="comment">% since it was stored as text, we have to make it to numbers</span>
 <span class="comment">% and reshape it a little</span>
@@ -207,8 +207,8 @@ clear
 close <span class="string">all</span>
 
 <span class="comment">% load data</span>
-urlA = <span class="string">'http://people.physik.hu-berlin.de/~schinkel/timely/c10.dat'</span>;
-urlB = <span class="string">'http://people.physik.hu-berlin.de/~schinkel/timely/c11.dat'</span>;
+urlA = <span class="string">'http://dreeg.org/timely/c10.dat'</span>;
+urlB = <span class="string">'http://dreeg.org/timely/c11.dat'</span>;
 
 a = str2num(urlread(urlA));
 b = str2num(urlread(urlB));
@@ -368,7 +368,7 @@ ylabel(<span class="string">'electrodes'</span>);
 <span class="comment">%   end</span>
 </pre>
 <p>2) Further study the EEG data provided. Use the software on my website 
-<a href="http://people.physik.hu-berlin.de/~schinkel">http://people.physik.hu-berlin.de/~schinkel</a> 
+<a href="http://dreeg.org">http://dreeg.org</a> 
 to estimate the confidence bounds of RQA measures. (cf. Schinkel et al, 2009)</p>
 <p>3) Try to construct networks based on joint recurrences (cf. Schinkel et al, 2011).</p><p class="footer"><br>
       Published with MATLAB&reg; 7.11<br></p></div><!--
@@ -449,7 +449,7 @@ to estimate the confidence bounds of RQA measures. (cf. Schinkel et al, 2009)</p
 
 % To get a head start we can use precomputed data
 % stored on my website
-url= 'http://people.physik.hu-berlin.de/~schinkel/timely/lorenz.dat'; 
+url= 'http://dreeg.org/timely/lorenz.dat'; 
 x = urlread(url);
 % since it was stored as text, we have to make it to numbers
 % and reshape it a little
@@ -625,8 +625,8 @@ clear
 close all
 
 % load data
-urlA = 'http://people.physik.hu-berlin.de/~schinkel/timely/c10.dat';
-urlB = 'http://people.physik.hu-berlin.de/~schinkel/timely/c11.dat';
+urlA = 'http://dreeg.org/timely/c10.dat';
+urlB = 'http://dreeg.org/timely/c11.dat';
 
 a = str2num(urlread(urlA));
 b = str2num(urlread(urlB));
@@ -777,7 +777,7 @@ ylabel('electrodes');
 %%
 % 2) Further study the EEG data provided. 
 % Use the software on my website
-% http://people.physik.hu-berlin.de/~schinkel to estimate the confidence 
+% http://dreeg.org to estimate the confidence 
 % bounds of RQA measures. (cf. Schinkel et al, 2009)? 
 %
 % Try to construct networks based on joint recurrences 
