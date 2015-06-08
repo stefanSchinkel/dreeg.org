@@ -2,13 +2,10 @@
  * Start Bootstrap - Scrolling Nav
  */
 
-@font-face{
-  src: url('http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext'),
-  font-family: "Lato";
-}
  body {
 
   font-family: Lato;
+  font-weight: 100;
   width: 100%;
   height: 100%;
 }
