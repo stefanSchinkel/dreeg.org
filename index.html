@@ -27,7 +27,7 @@
   <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top"
- onload='window.N=63; window.step=200; munch()'>
+ onload='window.N=63; window.step=100; munch()'>
 
   <!-- Navigation -->
   <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
@@ -75,23 +75,49 @@
         <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
         <body>
         <canvas id='mycanvas' height='450px' width='450px'>
-          <br />
+<!--           <br />
           <img src="images/munching.gif" alt="⊕" title="⊕" width="172px">
-          </canvas>
+ -->          </canvas>
         </div>
+        <div class="col-lg-2 col-md-2">
 
+          <style type="text/css">
+          .assembly {
+            text-align: left;
+            background-color:  black;
+            color: white;
+            font-family: "Courier New", Courier, monospace;
+            border : none;
+          }
+          .assembly > a {
+            text-decoration: none;
+            color: inherit;
+            background-color: inherit;
+          }
+
+          .assembly > a:hover {
+            text-decoration: none;
+            color: inherit;
+            background-color: inherit;
+          }
+
+          </style>
+          <pre class="assembly" id="assembly">
+          <a href="http://www.inwap.com/pdp10/hbaker/hakmem/hacks.html#item146">
+DATAI 2
+ADDB  1,2
+ROTC  2,-22
+XOR   1,2
+JRST   .-4
+          </a>
+          </pre>
+
+          <div class="bg-info" id="munchDetails" style="display:none">
+          As reported by <a href="https://en.wikipedia.org/wiki/HAKMEM">HAKMEM</a> (MIT AI Memo 239, 1972), Jackson Wright wrote the code to prodduce this pattern on a PDP-1 in 1962 (<a href="http://www.inwap.com/pdp10/hbaker/hakmem/hacks.html#item146">details</a>)
+            </div>
+           </div>
       </div>
-      <div class="block optional" id="blockComment" style="display:none;">
-        <div class="row">
-          <div class="col-md-1 col-xl"></div>
-          <div class="col-md-10">
-            <br />
-            <p class="bg-warning" >As reported by HAKMEM (MIT AI Memo 239, 1972), Jackson Wright wrote the code to prodduce this pattern on a PDP-1 in 1962 (<a href="http://en.wikipedia.org/wiki/Munching_square">wikipedia</a>)
-            </p>
-          </div>
-          <div class="col-md-1">p</div>
-        </div>
-      </div> <!- block -->
+
     </div>
   </section>
 
