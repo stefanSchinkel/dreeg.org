@@ -76,8 +76,8 @@
         <canvas id='mycanvas' height='450' width='450'>
         </canvas>
         </div>
-        <div class="col-lg-2 col-md-2">
-          <pre class="assembly" id="assembly">
+        <div id="assembly" class="col-lg-2 col-md-2">
+          <pre class="assembly">
           <a href="http://www.inwap.com/pdp10/hbaker/hakmem/hacks.html#item146" target="_blank">
 DATAI 2
 ADDB  1,2
@@ -269,14 +269,16 @@ JRST  .-4</a>
   <script type="text/javascript">
   // Shorthand for $( document ).ready()
   $(function() {
-    $('#assembly').mouseover(function() {
+    function hideDetails(){
+      $('#munchDetails').fadeOut('slow');
+    };
+    $('#assembly').mouseenter(function() {
       $('#munchDetails').css("display", "block");
     });
-    $('#munchDetails').click(function() {
-      $('#munchDetails').css("display", "none");
-    });
+    $('#assembly').mouseleave(hideDetails);
 
-  });
+    }); // document ready
+
   </script>
 </body>
 </html>
