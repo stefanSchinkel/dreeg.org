@@ -77,14 +77,17 @@
         </canvas>
         </div>
         <div class="col-lg-2 col-md-2">
-          <p class="assembly" id="assembly">
+          <pre class="assembly" id="assembly">
           <a href="http://www.inwap.com/pdp10/hbaker/hakmem/hacks.html#item146" target="_blank">
-            DATAI 2<br/>ADDB  1,2<br/>ROTC  2,-22<br/>
-            XOR   1,2<br/>JRST   .-4</a>
-          </p>
+DATAI 2
+ADDB  1,2
+ROTC  2,-22
+XOR   1,2
+JRST  .-4</a>
+          </pre>
 
-          <div class="bg-info" id="munchDetails" style="display:none">
-          As reported by <a href="https://en.wikipedia.org/wiki/HAKMEM">HAKMEM</a> (MIT AI Memo 239, 1972), Jackson Wright wrote the code to prodduce this pattern on a PDP-1 in 1962 (<a href="http://www.inwap.com/pdp10/hbaker/hakmem/hacks.html#item146">details</a>)
+          <div class="bg-warning" id="munchDetails" style="padding:1em; display:none">
+          As reported by HAKMEM Jackson Wright wrote the code to produce this pattern on a PDP-1 in 1962 (<a href="http://www.inwap.com/pdp10/hbaker/hakmem/hacks.html#item146">details</a>)
             </div>
            </div>
       </div>
@@ -266,7 +269,13 @@
   <script type="text/javascript">
   // Shorthand for $( document ).ready()
   $(function() {
-    console.log( "ready!" );
+    $('#assembly').mouseover(function() {
+      $('#munchDetails').css("display", "block");
+    });
+    $('#munchDetails').click(function() {
+      $('#munchDetails').css("display", "none");
+    });
+
   });
   </script>
 </body>
