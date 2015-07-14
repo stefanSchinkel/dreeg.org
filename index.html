@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 
   <meta charset="utf-8">
@@ -13,8 +13,8 @@
 
   <!-- Bootstrap Core CSS  and custom-->
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/style.min.css" rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <link href="css/style.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Lato&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -27,7 +27,7 @@
   <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top"
- onload='window.N=63; window.step=200; munch()'>
+ onload='window.N=63; window.step=100; munch()'>
 
   <!-- Navigation -->
   <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
@@ -73,25 +73,25 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-        <body>
-        <canvas id='mycanvas' height='450px' width='450px'>
-          <br />
-          <img src="images/munching.gif" alt="⊕" title="⊕" width="172px">
-          </canvas>
+        <canvas id='mycanvas' height='450' width='450'>
+        </canvas>
         </div>
+        <div id="assembly" class="col-lg-2 col-md-2">
+          <pre class="assembly">
+          <a href="http://www.inwap.com/pdp10/hbaker/hakmem/hacks.html#item146" target="_blank">
+DATAI 2
+ADDB  1,2
+ROTC  2,-22
+XOR   1,2
+JRST  .-4</a>
+          </pre>
 
+          <div class="bg-warning" id="munchDetails" style="padding:1em; display:none">
+          As reported by HAKMEM Jackson Wright wrote the code to produce this pattern on a PDP-1 in 1962 (<a href="http://www.inwap.com/pdp10/hbaker/hakmem/hacks.html#item146">details</a>)
+            </div>
+           </div>
       </div>
-      <div class="block optional" id="blockComment" style="display:none;">
-        <div class="row">
-          <div class="col-md-1 col-xl"></div>
-          <div class="col-md-10">
-            <br />
-            <p class="bg-warning" >As reported by HAKMEM (MIT AI Memo 239, 1972), Jackson Wright wrote the code to prodduce this pattern on a PDP-1 in 1962 (<a href="http://en.wikipedia.org/wiki/Munching_square">wikipedia</a>)
-            </p>
-          </div>
-          <div class="col-md-1">p</div>
-        </div>
-      </div> <!- block -->
+
     </div>
   </section>
 
@@ -266,6 +266,19 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/jquery.easing.min.js"></script>
   <script src="js/scrolling-nav.js"></script>
+  <script type="text/javascript">
+  // Shorthand for $( document ).ready()
+  $(function() {
+    function hideDetails(){
+      $('#munchDetails').fadeOut('slow');
+    };
+    $('#assembly').mouseenter(function() {
+      $('#munchDetails').css("display", "block");
+    });
+    $('#assembly').mouseleave(hideDetails);
 
+    }); // document ready
+
+  </script>
 </body>
 </html>

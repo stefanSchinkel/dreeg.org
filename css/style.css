@@ -52,16 +52,15 @@ html {
 
 /* canvas */
 #myCanvas {
-    margin-top: .1em;
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+  margin-top: .1em;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
-/*
- * other tweaks
- */
+
+/* other tweaks 0*/
 
  #header{
    font-weight: bold;
@@ -116,6 +115,25 @@ html {
  a.download {
   padding-left: .25em;
   font-weight: bolder;
+}
+
+.assembly {
+  text-align: left;
+  background-color:  black;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  border : none;
+}
+.assembly > a {
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+}
+
+.assembly > a:hover {
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
 }
 
 
